@@ -1,0 +1,78 @@
+<div class="row">
+    <div class="col-lg-12">
+        <nb-card>
+            <nb-card-header>Menu</nb-card-header>
+            <nb-card-body>
+                <form #menForm="ngForm" (ngSubmit)="onSubmit()" class="form-horizontal">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group required">
+                                <label for="title">Menu Title</label>
+                                <input type="hidden" name="id" [(ngModel)]="menu.id" />
+                                <input name="title" [(ngModel)]="menu.title" required id="title" type="text" class="form-control"
+                                    placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group required">
+                                <label for="urlPath">Icon Class</label>
+                                <input name="urlPath" [(ngModel)]="menu.icon" required id="icon" type="text"
+                                    class="form-control" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="parentMenuId">Parent Menu</label>
+                                <ng-select placeholder="Select Menu" name="parentMenuId" [(ngModel)]="menu.parentId"
+                                    outline status="info">
+                                    <ng-option *ngFor="let menu of menus" [value]="menu.id">
+                                        {{ menu.title }}
+                                    </ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group required">
+                                <label for="sortOrder">Sort Order</label>
+                                <input name="sortOrder" [(ngModel)]="menu.sortOrder" required id="remarks" type="text"
+                                    class="form-control" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <nb-checkbox [value]="true" name="external" [(ngModel)]="menu.external">External</nb-checkbox>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <nb-checkbox [value]="true" name="active" [(ngModel)]="menu.active">Active</nb-checkbox>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <nb-checkbox [value]="true" name="home" [(ngModel)]="menu.home">Home</nb-checkbox>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="moduleId">{{ 'form.module' | translate }}</label>
+                                <ng-select placeholder="Select Module" name="moduleId" [(ngModel)]="menu.moduleId"
+                                    outline status="info" (change)="onModuleChange($event)">
+                                    <ng-option *ngFor="let module of modules" [value]="module.id">
+                                        {{ module.name }}
+                                    </ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                    </div>
+                    <button [disabled]="!menForm.form.valid" type="submit" class="btn btn-danger">Save</button>
+                </form>
+            </nb-card-body>
+        </nb-card>
+
+    </div>
+</div>

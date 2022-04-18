@@ -1,0 +1,208 @@
+<div class="row">
+  <div class="col-md-8">
+    <form #clientForm="ngForm" novalidate>
+    <nb-card>
+      <nb-card-header> 
+        <div class="addinfo-header">
+          Create New Customer
+      </div> 
+      <span class="back-icon position-absolute"> 
+        <a title="Go Back" class="back-button nb-btn-change cursor-pointer" routerLink="/pages/contact/list"><i class="lni-reply"></i> </a>
+      </span>
+    </nb-card-header>
+      <nb-card-body>
+        <div class="row">
+            <div class="pr-4 col-md-6">
+
+              <div class="form-group">
+                  <label  class="label-space">Name:<span class="text-danger">*</span></label>
+                  <input type="text" nbInput fullWidth fieldSize="small" name="name" ngModel required>
+              </div>
+
+              <!-- <div class="form-group">
+                <label class="label-space">Email:<span class="text-danger">*</span></label>
+                <input type="email" nbInput fullWidth fieldSize="small" name="email" ngModel required>
+              </div> -->
+
+              <div class="form-group">
+                <label class="label-space">Email: <span class="help-block text-danger errormsg" *ngIf="emailvld.invalid && emailvld.touched"> *</span></label>
+                <input type="email" nbInput fullWidth fieldSize="small" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" cols="15" rows="1" #emailvld="ngModel" name="email" ngModel required>
+              </div>
+
+              <!-- <div class="form-group">
+
+                  <label  class="label-space">Name:</label>
+                  <input class="form-control" type="text" nbInput fullWidth fieldSize="small" name="name" ngModel/>
+                  <div class="invalid-feedback">
+                    <div>name is required</div>
+                  </div>
+                  
+              </div> -->
+
+              
+              <div class="form-group">
+                <label class="label-space " required>Contact Status: </label>
+                <!-- <div class="form-group required">
+                  <div class="dropdown">
+                  
+                    <nb-select size="small"  placeholder="Select" name="contactStatus" ngModel>
+                      <nb-option value="Lead">Lead</nb-option>
+                      <nb-option value="Prospect">Prospect</nb-option>
+                      <nb-option value="Opportunity">Opportunity</nb-option>
+                      <nb-option value="Customer">Customer</nb-option>
+                    </nb-select>
+                  </div>
+                </div> -->
+                <dx-select-box
+                  [dataSource]="['Lead', 'Prospect', 'Opportunity', 'Customer']" [height]="30" placeholder="Select a Status" class="selectbox-dx" [(selectedItem)]="contactStatus" name="contactStatus" ngModel required>
+                </dx-select-box>
+
+              </div>
+
+              <div class="form-group">
+                <label class="label-space">Location:</label>
+                <input type="text" nbInput fullWidth fieldSize="small" name="location" ngModel>
+              </div>
+
+              <div class="form-group">
+                  <label class="label-space">Flat Size:</label>
+                  <input type="number" nbInput fullWidth fieldSize="small" name="flatsize" ngModel>
+              </div>
+
+              <div class="form-group">
+                  <label class="label-space " required >Ready/On Going:</label>
+                  <!-- <div class="form-group required">
+                    <div class="dropdown">
+                    
+                      <nb-select size="small"  placeholder="Select" name="readyOngoing" ngModel>
+                        <nb-option value="Ready">Ready</nb-option>
+                        <nb-option value="OnGoing">On Going</nb-option>
+                      </nb-select>
+                    </div>
+                  </div> -->
+                  <dx-select-box
+                    [dataSource]="['Ready', 'On Going']" [height]="30" class="selectbox-dx" name="readyOngoing" ngModel>
+                  </dx-select-box>
+              </div>
+
+              <div class="form-group">
+                  <label class="label-space" required>For Whome:</label>
+                  <dx-select-box
+                  [dataSource]="['Own', 'Other']" [height]="30" class="selectbox-dx" [(selectedItem)]="forwhome" name="forwhome" ngModel>
+                </dx-select-box>
+                  <!-- <div class="form-group required">
+                    <div class="dropdown">
+                    
+                      <nb-select size="small"  placeholder="Select" name="forwhome" ngModel>
+                        <nb-option value="Own">Own</nb-option>
+                        <nb-option value="Other">Other</nb-option>
+                      </nb-select>
+                    </div>
+                  </div> -->
+              </div>
+
+              <div class="form-group">
+                  <label class="label-space" required>Finance By: </label>
+                  <dx-select-box
+                  [dataSource]="['Own', 'Own & Bank']" [height]="30" class="selectbox-dx" [(selectedItem)]="financeBy" name="financeBy" ngModel>
+                </dx-select-box>
+                  <!-- <div class="form-group required">
+                    <div class="dropdown">
+                    
+                      <nb-select size="small"  placeholder="Select" name="financeBy" ngModel>
+                        <nb-option value="Own">Own</nb-option>
+                        <nb-option value="Own & Bank">Own & Bank</nb-option>
+                      </nb-select>
+                    </div>
+                  </div> -->
+              </div>             
+            </div>
+
+            <div class=" col-md-6">
+
+              <div class="form-group">
+                <label class="label-space required">Mobile No1: <span class="text-danger">*</span> </label>
+                <input type="text" (keypress)="keyPress($event)" nbInput fullWidth fieldSize="small" name="mobileno1" ngModel required>
+              </div>
+  
+              <div class="form-group">
+                <label class="label-space">Mobile No2:</label>
+                <input type="text" (keypress)="keyPress($event)" nbInput fullWidth fieldSize="small" name="mobileno2" ngModel>
+              </div>
+  
+              <div class="form-group">
+                <label class="label-space">Mobile No3:</label>
+                <input type="text" (keypress)="keyPress($event)" nbInput fullWidth fieldSize="small" name="mobileno3" ngModel>
+              </div>
+
+              <div class="form-group">
+                <label class="label-space">Wish Location:</label>
+                <input type="text" nbInput fullWidth fieldSize="small" name="wishlocation" ngModel>
+              </div>
+
+              <div class="form-group">
+                  <label class="label-space">Budget:</label>
+                  <input type="text" nbInput fullWidth fieldSize="small" name="budget" ngModel>
+              </div>
+
+              <div class="form-group">
+                <label class="label-space required">Source: <span class="text-danger">*</span></label>
+                <dx-select-box
+                [dataSource]="['LandOwner reference', 'Print Media', 'Electronic Media', 'Project Fair']" [height]="30" class="selectbox-dx" [(selectedItem)]="source" name="source" ngModel required>
+              </dx-select-box>
+                <!-- <div class="form-group required">
+                  <div class="dropdown">
+                  
+                    <nb-select size="small"  placeholder="Select" name="source" ngModel>
+                  <nb-option value="LandOwner reference">LandOwner reference</nb-option>
+                      <nb-option value="Print Media">Print Media</nb-option>
+                      <nb-option value="Electronic Media">Electronic Media</nb-option>
+                      <nb-option value="Project Fair">Project Fair</nb-option>
+                    </nb-select>
+                  </div>
+                </div> -->
+              </div>
+
+              <div class="form-group">
+                <label class="label-space required">Purpose: <span class="text-danger">*</span></label>
+                <dx-select-box
+                [dataSource]="['Own Use', 'Rent']" [height]="30" class="selectbox-dx" [(selectedItem)]="purpose" name="purpose" ngModel required>
+                </dx-select-box>
+                <!-- <div class="form-group required">
+                  <div class="dropdown">
+                  
+                    <nb-select size="small"  placeholder="Select" name="purpose" ngModel>
+                      <nb-option value="Own Use">Own Use</nb-option>
+                      <nb-option value="Rent">Rent</nb-option>
+                    </nb-select>
+                  </div>
+                </div> -->
+              </div>
+              
+              <div class="form-group">
+                <label class="label-space">Hand Over Date:</label>
+                <input type="date" class="form-control" name="handoverdate" ngModel>
+              </div>
+
+            </div>
+            
+        </div>  
+      </nb-card-body>
+      <nb-card-footer>
+
+          <div class="col-md-12">
+            <div class="form-group text-center">
+              <span class="pr-2">
+                <button type="submit"  [disabled]="clientForm.invalid" (click)="onSubmit(clientForm)" class="ml-2 hovr-pointr tdl-theme-bg" nbButton size="xsmall" status="default">  Submit</button>
+              </span>
+              <span class="pl-2" >
+              <a  class="hovr-pointr cancle-btn" routerLink="/pages/contact/list" nbButton size="xsmall">  Cancel</a>
+            </span>
+            </div>
+          </div>
+        </nb-card-footer>
+
+      </nb-card>
+    </form>
+  </div>
+</div>

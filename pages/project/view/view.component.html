@@ -1,0 +1,189 @@
+<div class="row">
+  <div class="col-md-9">
+
+    <nb-card>
+
+      <nb-card-header >
+        <span class="addinfo-header"> Project </span>
+
+        <span class="back-icon position-absolute"> 
+          <a title="Go Back" class="back-button nb-btn-change cursor-pointer" routerLink="/pages/project/list"><i class="lni-reply"></i> </a>
+        </span>
+      </nb-card-header>
+
+    <nb-card-body class="position-relative pt-0">
+      <nb-tabset class=" tdl-web-tabset">
+        <nb-tab tabTitle="Project Details" tabIcon="lni-list" responsive>
+         
+          <div class="table-responsive">
+            <table class="table">
+              <tbody>
+
+                <tr class="d-flex">
+                  <th class="border-top-0 col-sm-4  pt-3" scope="row">Project Name:</th>
+                  <td class="border-top-0 col-sm-8  pt-3">{{ viewDetails.ProjectName}}</td>
+                </tr>
+                <tr class="d-flex">
+                  <th class="col-sm-4"  scope="row">Project Address:</th>
+                  <td class="col-sm-8">{{ viewDetails.ProjectAddress}}</td>
+                </tr>
+                <tr class="d-flex">
+                  <th class="col-sm-4"  scope="row">Project Type:</th>
+                  <td class="col-sm-8">{{ viewDetails.ProjectType}}</td>
+                </tr>
+
+                <tr class="d-flex">
+                  <th class="col-sm-4"  scope="row">Approve Date:</th>
+                  <td class="col-sm-8">{{ viewDetails.ApproveDate}}</td>
+                </tr>
+                <tr class="d-flex">
+                  <th class="col-sm-4"  scope="row">Taking Date:</th>
+                  <td class="col-sm-8">{{ viewDetails.TakingDate}}</td>
+                </tr>
+                <tr class="d-flex">
+                  <th class="col-sm-4"  scope="row">Visible Status:</th>
+                  <td class="col-sm-8">
+                    <div *ngIf="viewDetails.VisibleStatus === '1'">
+                      <span class="tdl-theme-badge badge badge-success">Active</span>
+                    </div>
+                    <div *ngIf="viewDetails.VisibleStatus === '0'">
+                      <span class="tdl-theme-badge badge badge-danger">Inactive</span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+   
+        </nb-tab>
+   
+        <nb-tab tabTitle="Land Area Information" tabIcon="lni-map-marker" responsive>
+        
+        <div class="table-responsive">
+          <table class="table">
+            <tbody>
+
+              <tr class="d-flex">
+                <th class="border-top-0 col-sm-4 pt-3" scope="row">Land Owner Name:</th>
+                <td class="border-top-0 col-sm-8 pt-3">{{ viewDetails.LoName}}</td>
+              </tr>
+              <tr class="d-flex">
+                <th class="col-sm-4" scope="row">Land Area:</th>
+                <td class="col-sm-8">{{ viewDetails.LandArea}}</td>
+              </tr>
+              <tr class="d-flex">
+                <th class="col-sm-4" scope="row">Storied:</th>
+                <td class="col-sm-8">{{ viewDetails.Storied}}</td>
+              </tr>
+              <tr class="d-flex">
+                <th class="col-sm-4" scope="row">Total Unit:</th>
+                <td class="col-sm-8">{{ viewDetails.TotalUnit}}</td>
+              </tr>
+              <tr class="d-flex">
+                <th class="col-sm-4" scope="row">Land Owner Unit:</th>
+                <td class="col-sm-8">{{ viewDetails.LoUnit }}</td>
+              </tr>
+              <tr class="d-flex">
+                <th class="col-sm-4" scope="row">Tdl Unit:</th>
+                <td class="col-sm-8">{{ viewDetails.TdlUnit }}</td>
+              </tr>
+              <tr class="d-flex">
+                <th class="col-sm-4" scope="row">Total Parking:</th>
+                <td class="col-sm-8">{{ viewDetails.TotalParking}}</td>
+              </tr>
+              <tr class="d-flex">
+                <th class="col-sm-4" scope="row">Tdl Parking:</th>
+                <td class="col-sm-8">{{ viewDetails.TdlParking}}</td>
+              </tr>
+              <tr class="d-flex">
+                <th class="col-sm-4" scope="row">Land Owner Parking:</th>
+                <td class="col-sm-8">{{ viewDetails.LoParking}}</td>
+              </tr>
+              <tr class="d-flex">
+                <th class=" col-sm-4" scope="row">Land Owner Rate:</th>
+                <td class=" col-sm-8" >{{ viewDetails.LoRate}}</td>
+              </tr>
+              <tr class="d-flex">
+                <th class="col-sm-4" scope="row">Client Rate:</th>
+                <td class="col-sm-8">{{ viewDetails.ClientRate}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+       </nb-tab>
+
+        <nb-tab tabTitle="Handover Schedule" tabIcon="lni-handshake" responsive>
+           
+          <div class="table-responsive">
+            <table class="table">
+              <tbody>
+
+                <tr class="d-flex">
+                  <th class="border-top-0 col-sm-4 pt-3" scope="row">Handover Date:</th>
+                  <td class="border-top-0 col-sm-8 pt-3">{{ viewDetails.HandoverDate}}</td>
+                </tr>
+                <tr class="d-flex">
+                  <th class="col-sm-4"  scope="row">Handover Date for client:</th>
+                  <td class="col-sm-8">{{ viewDetails.HandoverDateClient}}</td>
+                </tr>
+                <tr class="d-flex">
+                  <th class="col-sm-4"  scope="row">Grace Time:</th>
+                  <td class="col-sm-8">{{ viewDetails.GraceTime}}</td>
+                </tr>
+
+                <tr class="d-flex">
+                  <th class="col-sm-4"  scope="row">Handover Date after Grace:</th>
+                  <td class="col-sm-8">{{ viewDetails.HandoverDateafterGrace}}</td>
+                </tr>
+                <tr class="d-flex">
+                  <th class="col-sm-4"  scope="row">Compensation Start:</th>
+                  <td class="col-sm-8">{{ viewDetails.CompensationStart}}</td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+           
+         </nb-tab>
+
+        <nb-tab tabTitle="Unit Status" tabIcon="nb-bar-chart" responsive>
+        
+        <div class="pt-3">
+          <dx-data-grid id="gridContainer" [rowAlternationEnabled]="true" [dataSource]="projectDetails" [showBorders]="true">
+
+            <dxi-column dataField="Floor" caption="Floor" bold="true">
+            </dxi-column>
+            <dxi-column dataField="UnitId" caption="Unit" bold="true">
+            </dxi-column>
+            <dxi-column dataField="UnitDirection" caption="Direction" bold="true">
+            </dxi-column>
+            <dxi-column dataField="Size" caption="Size" bold="true">
+            </dxi-column>
+            <dxi-column dataField="Rate" caption="Rate" bold="true">
+            </dxi-column>
+            <dxi-column caption="Status" [width]="100" [allowFiltering]="false" [allowSorting]="false" cellTemplate="Status" bold="true">
+            </dxi-column>
+            <div *dxTemplate="let cell of 'Status'" class="d-inline-block">
+              <div *ngIf="cell.data.Status === 'Offered'">
+                <span class="badge badge-warning">OFFERED</span>
+              </div>
+              <div *ngIf="cell.data.Status === 'Not Sold'">
+                <span class="badge badge-danger">NOT SOLD</span>
+              </div>
+              <div *ngIf="cell.data.Status === 'Sold'">
+                <span class="badge badge-success">SOLD</span>
+              </div>
+            </div>
+          </dx-data-grid>
+        </div>
+  
+      </nb-tab>
+    </nb-tabset>
+   
+   </nb-card-body>
+  </nb-card>
+  </div>
+
+</div>
+
+

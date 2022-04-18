@@ -1,0 +1,335 @@
+<div class="row">
+  <div class="col-lg-12">
+    <nb-card>
+
+      <nb-card-header>
+        <i class="lni-users"> <span class="heading"> Report: Contacts</span></i>
+        
+      </nb-card-header>
+
+      <nb-card-body>
+
+        <!--<div class="row labelText">
+          <div class="col-md-3">
+            
+
+            <div class="form-group required" id="dd">
+              <div class="dropdown">
+              
+                <nb-select size="small"  placeholder="Select" name="searchOption" ngModel  (selectedChange)="onChange($event)">
+                   <nb-option value="1">Search By Create Date</nb-option>
+                  <nb-option value="2">Search By Existing Area</nb-option>
+                  <nb-option value="3">Search By Moving Area</nb-option> 
+                   <nb-option value="4">Search By Customer Date</nb-option> 
+                  <nb-option value="5">Search By Opportunity Date</nb-option>
+                   <nb-option value="6">Search By New Prospectus Date</nb-option>
+                  <nb-option value="7">Search By Exsiting To Moving Area</nb-option>
+                  
+                </nb-select>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <button class="space" nbButton size="xsmall" status="primary" (click)="refresh()"><i class="lni-spinner-arrow"></i></button>
+          </div>
+
+        </div> -->
+
+        
+
+        <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" novalidate>
+
+      
+
+          <div class="row labelText">
+  
+            <div class="col-md-3" *ngIf="createFromDateIsHidden">
+              <div>
+                <p> Create From Date:</p>
+              </div>
+  
+              <div class="form-group required">
+                <div class="dropdown" id="dd">
+  
+                  <input type="date" id="fromDate" class="form-control" placeholder="pick Date" name="createFromDate" required ngModel>
+  
+                </div>
+  
+              </div>
+            </div>
+  
+            <div class="col-md-3" *ngIf="createToDateIsHidden">
+              <div>
+                <p> Create To Date:</p>
+              </div>
+  
+              <div class="form-group required">
+                <div class="dropdown" id="dd">
+  
+                  <input type="date" class="form-control" placeholder="pick Date" name="createToDate" required ngModel>
+  
+                </div>
+              </div>
+            </div>
+      
+            <!-- <div class="col-md-3">
+              <div>
+                <p> Status Change From Date:</p>
+              </div>
+  
+              <div class="form-group required">
+                <div class="dropdown" id="dd">
+  
+                  <input type="date" id="fromDate" class="form-control" placeholder="pick Date" name="statusFromDate" required ngModel>
+  
+                </div>
+  
+              </div>
+            </div>
+  
+            <div class="col-md-3">
+              <div>
+                <p> Status Change To Date:</p>
+              </div>
+  
+              <div class="form-group required">
+                <div class="dropdown" id="dd">
+  
+                  <input type="date" class="form-control" placeholder="pick Date" name="statusToDate" required ngModel>
+  
+                </div>
+              </div>
+            </div> -->
+
+            <div class="col-md-3" *ngIf="statusIsHidden">
+              <div>
+                <p> Search by Status:</p>
+              </div>
+
+              <div class="form-group required" id="dd">
+                <div class="dropdown">
+                
+                  <nb-select size="small"  placeholder="Select" name="status" ngModel>
+                    <nb-option value="Lead">Lead</nb-option>
+                    <nb-option value="Prospect">Prospect</nb-option>
+                    <nb-option value="Opportunity">Opportunity</nb-option>
+                    <nb-option value="Customer">Customer</nb-option>
+                  </nb-select>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="col-md-3">
+              <div>
+                <p> Search by Existing Area:</p>
+              </div>
+
+              <div class="form-group required" id="dd">
+                <div class="dropdown">
+                  <nb-select size="small" placeholder="Select" name="existingArea" ngModel>
+                    <nb-option  *ngFor="let area of uniquexistingAreaList" value="{{area}}">{{area}}</nb-option>
+                  
+                  </nb-select>
+
+                 
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div>
+                <p> Search by Moving Area:</p>
+              </div>
+
+              <div class="form-group required" id="dd">
+                <div class="dropdown">
+                  <nb-select size="small" placeholder="Select" name="movingArea" ngModel>
+                    <nb-option *ngFor="let movingArea of uniqueMovingAreaList" value="{{movingArea}}">{{movingArea}}</nb-option>
+                  </nb-select>
+                </div>
+              </div>
+            </div> -->
+
+            <!-- <div class="col-md-3">
+              <div>
+                <p> Trun Around Date:</p>
+              </div>
+  
+              <div class="form-group required">
+                <div class="dropdown" id="dd">
+  
+                  <input type="date" id="fromDate" class="form-control" placeholder="pick Date" name="turnAroundDate" required ngModel>
+  
+                </div>
+  
+              </div>
+            </div> -->
+
+            <div class="col-md-3" *ngIf="customerDateIsHidden">
+              <div>
+                <p>Search By Customer From Date:</p>
+              </div>
+  
+              <div class="form-group required">
+                <div class="dropdown" id="dd">
+  
+                  <input type="date" id="fromDate" class="form-control" placeholder="pick Date" name="customerFromDate" required ngModel>
+  
+                </div>
+  
+              </div>
+            </div>
+
+            <div class="col-md-3" *ngIf="customerDateIsHidden">
+              <div>
+                <p>Search By Customer To Date:</p>
+              </div>
+  
+              <div class="form-group required">
+                <div class="dropdown" id="dd">
+  
+                  <input type="date" id="fromDate" class="form-control" placeholder="pick Date" name="customerToDate" required ngModel>
+  
+                </div>
+  
+              </div>
+            </div>
+
+            <div class="col-md-3" *ngIf="opportunityDateIsHidden">
+              <div>
+                <p>Search By Opportunity From Date:</p>
+              </div>
+  
+              <div class="form-group required">
+                <div class="dropdown" id="dd">
+  
+                  <input type="date" id="fromDate" class="form-control" placeholder="pick Date" name="opportunityFromDate" required ngModel>
+  
+                </div>
+  
+              </div>
+            </div>
+
+            
+
+            <div class="col-md-3" *ngIf="opportunityDateIsHidden">
+              <div>
+                <p>Search By Opportunity To Date:</p>
+              </div>
+  
+              <div class="form-group required">
+                <div class="dropdown" id="dd">
+  
+                  <input type="date" id="fromDate" class="form-control" placeholder="pick Date" name="opportunityToDate" required ngModel>
+  
+                </div>
+  
+              </div>
+            </div>
+
+            <div class="col-md-3" *ngIf="oldProspectusDateIsHidden">
+              <div>
+                <p>Search By Old Prospectus Date:</p>
+              </div>
+  
+              <div class="form-group required">
+                <div class="dropdown" id="dd">
+  
+                  <input type="date" id="fromDate" class="form-control" placeholder="pick Date" name="oldProspectusDate" required ngModel>
+  
+                </div>
+  
+              </div>
+            </div>
+
+            <div class="col-md-3" *ngIf="newProspectusDateIsHidden">
+              <div>
+                <p>Search By New Prospectus From Date:</p>
+              </div>
+  
+              <div class="form-group required">
+                <div class="dropdown" id="dd">
+  
+                  <input type="date" class="form-control" placeholder="pick Date" name="newProspectusFromDate" required ngModel>
+  
+                </div>
+  
+              </div>
+            </div>
+
+            <div class="col-md-3" *ngIf="newProspectusDateIsHidden">
+              <div>
+                <p>Search By New Prospectus To Date:</p>
+              </div>
+  
+              <div class="form-group required">
+                <div class="dropdown" id="dd">
+  
+                  <input type="date" class="form-control" placeholder="pick Date" name="newProspectusToDate" required ngModel>
+  
+                </div>
+  
+              </div>
+            </div>
+
+
+            <!-- <div class="col-md-3 btnSeach">
+              <button nbButton size="xsmall" status="primary"><i class="lni-magnifier"></i>  </button>
+              <button class="space" nbButton size="xsmall" status="primary" (click)="refresh()"><i class="lni-spinner-arrow"></i></button>
+            </div> -->
+  
+          </div>
+  
+          <br>
+  
+        </form>
+
+
+        <dx-data-grid id="gridContainer" [dataSource]="dataSource" [showBorders]="true"
+      >
+      <dxo-search-panel [visible]="true" [width]="250"></dxo-search-panel>
+      <dxo-selection mode="single"></dxo-selection>
+      <dxo-header-filter [visible]="true"></dxo-header-filter>
+      <dxo-filter-row [visible]="false"></dxo-filter-row>
+      <dxo-export [enabled]="true" fileName="Contact" [allowExportSelectedData]="true"></dxo-export>
+
+      <dxi-column dataField="name" caption="Name">
+          </dxi-column>
+          <dxi-column dataField="contactStatus" caption="Customer Type">
+          </dxi-column>
+          <!-- <dxi-column dataField="email" caption="Email">
+          </dxi-column> -->
+          <dxi-column dataField="mobileno1" caption="Phone">
+          </dxi-column>
+          <!-- <dxi-column dataField="source" caption="Source of Customer">
+          </dxi-column> -->
+          <!-- <dxi-column dataField="VisibleStatus" caption="Status">
+          </dxi-column> -->
+          <!-- <dxi-column dataField="createdAt" dataType="date" format="dd-MM-yyyy" caption="Created Date">
+          </dxi-column>
+          <dxi-column dataField="CustomerDate" dataType="date" format="dd-MM-yyyy" caption="Customer Date">
+          </dxi-column>
+          <dxi-column dataField="OpportunityDate" dataType="date" format="dd-MM-yyyy" caption="Opportunity Date">
+          </dxi-column>
+          <dxi-column dataField="OldProspectusDate" dataType="date" format="dd-MM-yyyy" caption="Old Prospectus Date">
+          </dxi-column>
+          <dxi-column dataField="NewProspectusDate" dataType="date" format="dd-MM-yyyy" caption="New Prospectus Date">
+          </dxi-column>
+          <dxi-column dataField="location" caption="Existing Area">
+          </dxi-column>
+          <dxi-column dataField="wishlocation" caption="Moving Area">
+          </dxi-column> -->
+          <!-- <dxi-column dataField="" caption="Project Name">
+          </dxi-column>
+          <dxi-column dataField="" caption="Project Unit">
+          </dxi-column> -->
+
+      <!-- <dxo-paging class="tweleveGridPagr" [pageSize]="20"></dxo-paging> -->
+      <dxo-group-panel [visible]="true"></dxo-group-panel>
+    <dxo-grouping #expand [autoExpandAll]="true"></dxo-grouping>
+    </dx-data-grid>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

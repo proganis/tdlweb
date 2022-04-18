@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-lg-12">
+        <nb-card>
+            <nb-card-header>{{ 'form.role' | translate }}</nb-card-header>
+            <nb-card-body>
+                <form #roleForm="ngForm" (ngSubmit)="onSubmit()" class="form-horizontal">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group required">
+                                <label for="name">{{ 'form.rolename' | translate }}</label>
+                                <input name="name" [(ngModel)]="role.name" required id="name" type="text"
+                                    class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <nb-checkbox [value]="true" name="active" [(ngModel)]="role.active">{{ 'form.active' |
+                                    translate }}</nb-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group required">
+                                <label for="moduleId">{{ 'form.module' | translate }}</label>
+                                <ng-select placeholder="Select Module" name="moduleId" [(ngModel)]="role.moduleId"
+                                    outline status="info" (change)="onModuleChange($event)">
+                                    <ng-option *ngFor="let module of modules" [value]="module.id">
+                                        {{ module.name }}
+                                    </ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row"><br /><br /></div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label for="tree">{{ 'form.menu_permission' | translate }}</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <tree-root #tree [nodes]="menus" [options]="opts" (select)="onSelect($event)"
+                                (deselect)="onDeselect($event)"></tree-root>
+                        </div>
+                        
+                    </div>
+                    <div class="row"><br /><br /></div>
+                    <div class="row">
+                        <div class="col-md-4 offset-md-1">
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-success btn-xs" (click)="selectAll()">Select All</button>
+                                <button type="button" class="btn btn-danger btn-xs" (click)="deSelectAll()">Deselect All</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-info btn-xs" (click)="tree.treeModel.expandAll()">Expand All</button>
+                                <button type="button" class="btn btn-warning btn-xs" (click)="tree.treeModel.collapseAll()">Collapse All</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row"><br /><br /></div>
+                    <button [disabled]="!roleForm.form.valid" type="submit" class="btn btn-danger">{{ 'buttons.save' |
+                        translate }}</button>
+                </form>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

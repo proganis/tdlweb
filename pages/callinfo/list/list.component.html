@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-lg-12">
+    <nb-card>
+      <nb-card-header>
+        <span><h3>Call Information List</h3></span> 
+        <span class="pull-right"><a nbButton size="xsmall" status="primary" routerLink="create"><i class="lni-plus"></i>  Add New</a></span>
+      </nb-card-header>
+      <nb-card-body>
+        <div class="">
+          <dx-data-grid id="gridContainer" [dataSource]="dataSource" [showBorders]="true">
+            <dxo-search-panel [visible]="true" [width]="250"></dxo-search-panel>
+            <dxo-selection mode="single"></dxo-selection>
+            <dxo-header-filter [visible]="true"></dxo-header-filter>
+            <dxo-filter-row [visible]="true"></dxo-filter-row>
+            <dxo-export [enabled]="true" fileName="land-owner" [allowExportSelectedData]="true"></dxo-export>
+            <dxi-column dataField="Contact" caption="Contact">
+            </dxi-column>
+            <dxi-column dataField="Type" caption="Call Type">
+            </dxi-column>
+            <dxi-column dataField="CallPurpose" caption="Call Purpose">
+            </dxi-column>
+            <dxi-column dataField="CallStarttime" caption="Call Time">
+            </dxi-column>
+            <dxi-column dataField="CallDuration" caption="Duration">
+            </dxi-column>
+            <dxi-column dataField="Description" caption="Description">
+            </dxi-column>
+
+            <dxi-column dataField="CallResult" caption="Result">
+            </dxi-column>
+            
+            <dxi-column dataField="id" caption="Action" [width]="100" [allowFiltering]="false" [allowSorting]="false" cellTemplate="cellTemplate">  
+            </dxi-column>
+            <div *dxTemplate="let data of 'cellTemplate'">  
+              
+                <a [routerLink]="['view',data.value ]" routerLinkActive="active">  
+                  <i class="lni-popup actionIcon"></i>  
+                </a>
+                <a [routerLink]="['edit',data.value ]" routerLinkActive="active">  
+                  <i class="lni-pencil actionIcon"></i>  
+                </a>                  
+            </div>
+            <dxo-group-panel [visible]="true"></dxo-group-panel>
+            <dxo-grouping #expand [autoExpandAll]="true"></dxo-grouping>
+          </dx-data-grid>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

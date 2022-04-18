@@ -1,0 +1,154 @@
+<div class="row">
+  <div class="col-lg-12">
+    <nb-card>
+
+      <nb-card-header>
+        <i class="lni-invest-monitor"> <span class="heading"> Report: Sales Performance</span></i>
+        
+      </nb-card-header>
+
+      <nb-card-body>
+
+        <div class="row labelText">
+         
+
+          <div class="col-md-12">
+            <form #performanceForm="ngForm" (ngSubmit)="onSubmit(performanceForm)" novalidate>
+
+              <div class="row labelText">
+
+                <!-- <div class="col-md-3">
+                  <div>
+                    <p> From Date:</p>
+                  </div>
+      
+                  <div class="form-group required">
+                    <div class="dropdown" id="dd">
+      
+                      <input type="date" id="fromDate" class="form-control" placeholder="pick Date" name="fromDate" required ngModel>
+      
+                    </div>
+      
+                  </div>
+                </div>
+      
+                <div class="col-md-3">
+                  <div>
+                    <p> To Date:</p>
+                  </div>
+      
+                  <div class="form-group required">
+                    <div class="dropdown" id="dd">
+      
+                      <input type="date" class="form-control" placeholder="pick Date" name="toDate" required ngModel>
+      
+                    </div>
+                  </div>
+                </div> -->
+
+                <div class="col-md-3">
+                  <div>
+                    <p> Search by Sales Man:</p>
+                  </div>
+    
+                  <div class="form-group required" id="dd">
+                    <div class="dropdown">
+                      <nb-select size="small" placeholder="Select" name="salesMan" ngModel>
+                        <nb-option  *ngFor="let salesMan of uniqueSaleManList" value="{{salesMan}}">{{salesMan}}</nb-option>
+                      
+                      </nb-select>
+    
+                     
+                    </div>
+                  </div>
+                </div>
+            
+                <!-- <div class="col-md-3" *ngIf="quantityIsHidden">
+                  <div>
+                    <p> Quantity:</p>
+                  </div>
+            
+                  <div class="form-group required">
+                    <input type="text" nbInput fullWidth fieldSize="small" placeholder="Quantity" name="quantity" ngModel>
+            
+                  </div>
+                </div> -->
+            
+                
+            
+                <div class="col-md-3 btnSeach">
+                  <button nbButton size="xsmall" status="primary"><i class="lni-magnifier"></i>  </button>
+                  <button class="space" nbButton size="xsmall" status="primary" (click)="refresh()"><i class="lni-spinner-arrow"></i></button>
+                </div>
+            
+              </div>
+            
+              <br>
+            
+            </form>
+          </div>
+
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-6">
+              
+                <dx-pie-chart id="pie" title="Sales Performance" palette="bright" [dataSource]="dataSourceChart">
+                  <dxi-series argumentField="_id" valueField="count">
+                    <dxo-label [visible]="true">
+                      <dxo-connector [visible]="true" [width]="1"></dxo-connector>
+                    </dxo-label>
+                  </dxi-series>
+                  <dxo-size [width]="500"></dxo-size>
+                </dx-pie-chart>
+              </div>
+  
+              <div class="col-md-6">
+                <dx-data-grid id="gridContainer" [dataSource]="dataSourceTwo" [showBorders]="true">
+                  <dxo-search-panel [visible]="true" [width]="250"></dxo-search-panel>
+                  <dxo-selection mode="single"></dxo-selection>
+                  <dxo-header-filter [visible]="true"></dxo-header-filter>
+                  <dxo-export [enabled]="true" fileName="Sales Performance" [allowExportSelectedData]="true"></dxo-export>
+                
+                  <dxi-column dataField="_id" caption="Name">
+                  </dxi-column>
+                  <dxi-column dataField="assignedUnit" caption="Assigned Unit">
+                  </dxi-column>
+                  <dxi-column dataField="count" caption="Sold Unit">
+                  </dxi-column>
+                  <dxi-column [width]="200" dataField="percentage" caption="Target Achivement (%)">
+                  </dxi-column>
+                  
+                  <!-- <dxo-paging class="tweleveGridPagr" [pageSize]="20"></dxo-paging> -->
+                  <dxo-group-panel [visible]="true"></dxo-group-panel>
+                  <dxo-grouping #expand [autoExpandAll]="true"></dxo-grouping>
+                </dx-data-grid>
+
+                <br><br>
+
+                <div *ngIf="barChart">
+                  <!-- <dx-chart id="chart" [dataSource]="barArray">
+                    <dxi-series argumentField="xaxis" valueField="yaxis" name="Sales Performance" type="bar" color="#8a7fff">
+                    </dxi-series>
+                  </dx-chart> -->
+
+                  <dx-chart id="chart" [dataSource]="barArray">
+                    <dxo-title text="Individual Sale Performance">
+                    </dxo-title>
+                    <dxo-common-series-settings argumentField="xaxis" type="bar" valueField="yaxis" [ignoreEmptyPoints]="true">
+                    </dxo-common-series-settings>
+                    <dxo-series-template nameField="yaxis"></dxo-series-template>
+                  </dx-chart>
+                </div>
+
+               
+              </div>
+            </div>
+           
+          </div>
+          
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+

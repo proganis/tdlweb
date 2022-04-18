@@ -1,0 +1,37 @@
+@import '../../../@theme/styles/themes';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/breakpoints';
+
+@include nb-install-component() {
+
+  nb-card-body {
+    overflow: visible;
+  }
+
+.font-size-16 {
+  font-size: 16px;
+}
+
+  #result{
+      border: 1px solid black;
+      padding: 3%;
+  }
+
+  #datepcinp{
+    width:200px;
+    background-color:
+    #aed6f1;
+  }
+  #datepclb{
+    margin-top:100px;
+    color:#2471a3;
+  }
+  
+  .cursor-hover {
+    cursor: pointer;
+  }
+  
+  
+  
+  
+}

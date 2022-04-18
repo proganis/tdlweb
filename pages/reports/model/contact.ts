@@ -1,0 +1,25 @@
+export class Contact {
+    name:string
+    mobileno1:string
+    mobileno2:string
+    email:string
+    source:string
+    contactStatus:string
+    location:string
+    wishlocation:string
+    flatsize:string
+    budget:number
+    readyOngoing:string
+    handoverdate:Date
+    forwhome:string
+    financeBy:string
+    issueby:string
+    leadDate:Date
+    NewProspectusDate:Date
+    OldProspectusDate:Date
+    OpportunityDate:Date
+    CustomerDate:Date
+    VisibleStatus:string
+    createdAt:Date
+    updatedAt:Date
+  }

@@ -1,0 +1,32 @@
+export class Project {
+  id:string
+  ProjectName:string
+  ProjectAddress:string
+  ProjectType:string
+  LoName:string
+  LandArea:number
+  Storied:number
+  ApproveDate:Date
+  TakingDate:Date
+  TotalUnit:number
+  TdlUnit:number
+  LoUnit:number
+  TotalParking:number
+  TdlParking:number
+  LoParking:number
+  HandoverDate:Date
+  GraceTime:number
+  HandoverDateafterGrace:Date
+  CompensationStart:Date
+  LoRate:number
+  ClientRate:number
+  issueby:string
+  VisibleStatus:number
+  
+  Floor:number
+  SaleDate:Date
+  Status:string
+  UnitId:string
+  Size:number
+  Rate:number
+  }

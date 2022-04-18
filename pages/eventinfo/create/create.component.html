@@ -1,0 +1,145 @@
+<div class="row">
+  <div class="col-md-8">
+    <form #eventinfoForm="ngForm" novalidate>
+      <nb-card> 
+        <!-- <nb-card-header>
+          <div class="row">
+            <div>Event Information</div>
+          </div>
+        </nb-card-header> -->
+        <nb-card-header> 
+          <div class="addinfo-header"> Event Information</div> 
+          <span class="back-icon position-absolute"> 
+          <a title="Go Back" class="back-button nb-btn-change cursor-pointer" routerLink="/pages/eventinfo/list"><i class="lni-reply"></i> </a>
+        </span>
+        </nb-card-header>
+
+        <nb-card-body>
+          <div class="row">
+            <div class="col-md-6">
+
+              <div class="form-group">
+                <label class="label-space">Title: <span class="text-danger">*</span></label>
+                <input type="text" nbInput fullWidth fieldSize="small" name="title" ngModel required>
+              </div>
+              
+              <div class="form-group">
+                <label class="label-space">Location:</label>
+                <input type="text" nbInput fullWidth fieldSize="small" name="location" ngModel>
+              </div>
+
+              <!-- <div class="switch-button pb-4">
+                <div class="dx-field">
+                  <div class="dx-field-label">All Day</div>
+                  <div [ngClass]="{'switch-btn-red': switchEd}" class="switch-btn dx-field-value">
+                      <dx-switch [value]="true" (onValueChanged)="okClicked($event)"></dx-switch>
+                  </div>
+                </div>
+              </div> -->
+
+              <div class="form-group">
+                <label class="label-space">From date:</label>
+                <input type="date" class="form-control" name="fromdate" ngModel>
+              </div>
+
+              <div class="form-group">
+                <label class="label-space">To date:</label>
+                <input type="date" class="form-control" name="todate" ngModel>
+              </div>
+              <div class="form-group">
+                <label class="label-space">Host:</label>
+                <input type="text" nbInput fullWidth fieldSize="small" name="Host" ngModel>
+              </div>
+            </div>
+
+      
+            <div class="col-md-6">
+
+
+              <div class="form-group">
+                <label class="label-space">Participant:  <span class="text-danger">*</span></label>
+
+                <dx-select-box
+                  [dataSource]="['Contacts', 'Leads',  'Users']" [height]="30" class="selectbox-dx" name="participants" ngModel required>
+                </dx-select-box>
+
+                <!-- <div class="form-group required" id="dd">
+                  <div class="dropdown">
+                    <nb-select size="small"  placeholder="Select" name="participants" ngModel>
+                      <nb-option value="Contacts">Contacts</nb-option>
+                      <nb-option value="Leads">Leads</nb-option>
+                      <nb-option value="Users">Users</nb-option>
+                    </nb-select>
+                  </div>
+                </div> -->
+              </div>
+
+              <div class="form-group">
+                <label class="label-space">Contact: <span class="text-danger">*</span></label>
+                <dx-select-box
+                  [dataSource]="customerList" [height]="30" class="selectbox-dx" name="contact" ngModel required>
+                </dx-select-box>
+                <!-- <div class="form-group required" id="dd">
+                  <div class="dropdown">
+                  
+                    <nb-select size="small"  placeholder="Select" name="contact" ngModel>
+                      <nb-option *ngFor="let name of customerList" value="{{name}}">{{name}}</nb-option>
+                    </nb-select>
+                  </div>
+                </div> -->
+              </div>
+
+              <div class="form-group">
+                <label class="label-space">Please select a Type: <span class="text-danger">*</span></label>
+
+                <dx-select-box
+                  [dataSource]="['None', 'Daily',  'Weekly', 'Monthly', 'Yearly' ]" [height]="30" class="selectbox-dx" name="repeat" ngModel required>
+                </dx-select-box>
+
+          <!-- <div class="form-group required" id="dd">
+                  <div class="dropdown">
+                    <nb-select size="small"  placeholder="Select" name="repeat" ngModel>
+                      <nb-option value="None">None</nb-option>
+                      <nb-option value="Daily">Daily</nb-option>
+                      <nb-option value="Weekly">Weekly</nb-option>
+                      <nb-option value="Monthly">Monthly</nb-option>
+                      <nb-option value="Yearly">Yearly</nb-option>
+                    </nb-select>
+                  </div>
+                </div> -->
+              </div>
+
+              <div class="form-group">
+                <label class="label-space">Description:</label>
+                <!-- <input type="text" nbInput fullWidth fieldSize="small" name="description" ngModel> -->
+                <textarea nbInput fullWidth style="min-height: 7.2rem;"name="description" ngModel>  </textarea>
+              </div>
+            </div>
+          </div>
+        </nb-card-body>
+
+        <nb-card-footer>
+
+          <div class="col-md-12">
+            <div class="form-group text-center">
+              <span class="pr-2">
+                <button type="submit" (click)="onSubmit(eventinfoForm)"  class="ml-2 hovr-pointr tdl-theme-bg" nbButton size="xsmall" status="default" [disabled]="eventinfoForm.invalid">  Submit</button>
+              </span>
+              <span class="pl-2" >
+              <a  class="hovr-pointr cancle-btn" routerLink="/pages/eventinfo/list" nbButton size="xsmall">  Cancel</a>
+            </span>
+            
+            </div>
+          </div>
+        </nb-card-footer>
+
+        <!-- <nb-card-footer>
+          <div class="text-left">
+            <button class="ml-3" nbButton size="xsmall" class="tdl-theme-bg">Submit</button>
+          </div>
+        </nb-card-footer> -->
+
+      </nb-card>
+    </form>
+  </div>
+</div>

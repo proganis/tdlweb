@@ -1,0 +1,203 @@
+<div class="row">
+  <div class="col-lg-12">
+    <nb-card>
+
+      <nb-card-header>
+        <i class="lni-cart"><span class="heading"> Report: Sale</span></i></nb-card-header>
+
+      <nb-card-body>
+
+       <!-- <div class="row labelText">
+          <div class="col-md-3">
+            <div class="form-group required" id="dd">
+              <div class="dropdown">
+                <nb-select size="small"  placeholder="Select" name="searchOption" ngModel  (selectedChange)="onChange($event)">
+                   <nb-option value="1">Search By Customer</nb-option>
+                  <nb-option value="2">Search By Project</nb-option>
+                  <nb-option value="3">Search By Unit</nb-option> 
+                  <nb-option value="4">Search By Booking Date</nb-option>
+                  <nb-option value="5">Search By Downpayment Date</nb-option>
+                </nb-select>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+             <button class="space" nbButton size="xsmall" status="primary" (click)="refresh()"><i class="lni-spinner-arrow"></i></button>
+          </div>
+        </div>-->
+
+        <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" novalidate>
+           
+          <div class="row labelText">
+            
+            <div class="col-md-3" *ngIf="customerIsHidden">
+              <div>
+                <p> Search by Customer:</p>
+              </div>
+
+              <div class="form-group required" id="dd">
+                <div class="dropdown">
+                  <nb-select size="small" placeholder="Select" name="customer" ngModel>
+                    <nb-option *ngFor="let customer of uniqueCustomerList" value="{{customer}}">{{customer}}</nb-option>
+                  </nb-select>
+
+                 
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3" *ngIf="projectIsHidden">
+              <div>
+                <p> Search by Project:</p>
+              </div>
+
+              <div class="form-group required" id="dd">
+                <div class="dropdown">
+                  <nb-select size="small" placeholder="Select" name="project" ngModel>
+                    <nb-option *ngFor="let project of uniqueProjectList" value="{{project}}">{{project}}</nb-option>
+                  
+                  </nb-select>
+
+                 
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3" *ngIf="unitIsHidden">
+              <div>
+                <p> Search by Unit:</p>
+              </div>
+
+              <div class="form-group required" id="dd">
+                <div class="dropdown">
+                  <nb-select size="small" placeholder="Select" name="unit" ngModel>
+                    <nb-option *ngFor="let unit of uniqueUnitList" value="{{unit}}">{{unit}}</nb-option>
+                   
+                  </nb-select>
+
+                 
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-md-3" *ngIf="bookingDateIsHidden">
+              <div>
+                <p> Booking From Date:</p>
+              </div>
+  
+              <div class="form-group required">
+                <div class="dropdown" id="dd">
+  
+                  <input type="date" id="fromDate" class="form-control" placeholder="pick Date" name="bookingFromDate" required ngModel>
+  
+                </div>
+  
+              </div>
+            </div>
+
+            <div class="col-md-3" *ngIf="bookingDateIsHidden">
+              <div>
+                <p> Booking To Date:</p>
+              </div>
+  
+              <div class="form-group required">
+                <div class="dropdown" id="dd">
+  
+                  <input type="date" id="fromDate" class="form-control" placeholder="pick Date" name="bookingToDate" required ngModel>
+  
+                </div>
+  
+              </div>
+            </div>
+
+            <div class="col-md-3" *ngIf="downpaymentDate">
+              <div>
+                <p> Down payment From Date:</p>
+              </div>
+  
+              <div class="form-group required">
+                <div class="dropdown" id="dd">
+  
+                  <input type="date" id="fromDate" class="form-control" placeholder="pick Date" name="downpaymentFromDate" required ngModel>
+  
+                </div>
+  
+              </div>
+            </div>
+
+            <div class="col-md-3" *ngIf="downpaymentDate">
+              <div>
+                <p> Down payment To Date:</p>
+              </div>
+  
+              <div class="form-group required">
+                <div class="dropdown" id="dd">
+  
+                  <input type="date" id="fromDate" class="form-control" placeholder="pick Date" name="downpaymentToDate" required ngModel>
+  
+                </div>
+  
+              </div>
+            </div>
+
+
+            <div class="col-md-3" *ngIf="btnSeach">
+              <button class="btnSeach" size="xsmall" nbButton status="primary"><i class="lni-magnifier"></i></button>
+            </div>
+
+          </div>
+  
+          <!-- <br>
+  
+          <br> -->
+  
+        </form>
+
+
+        <dx-data-grid [dataSource]="dataSource" [masterDetail]="{ enabled: true, template: 'detail' }" keyExpr="id"
+          [repaintChangesOnly]="true" [columnAutoWidth]="true" [showBorders]="true">
+          <dxo-search-panel [visible]="true" [width]="250"></dxo-search-panel>
+          <dxo-selection mode="single"></dxo-selection>
+          <dxo-header-filter [visible]="true"></dxo-header-filter>
+          <dxo-filter-row [visible]="true"></dxo-filter-row>
+          <dxo-export [enabled]="true" fileName="Sales" [allowExportSelectedData]="true"></dxo-export>
+        
+          <!-- <dxo-paging [pageSize]="10"></dxo-paging> -->
+        
+          <dxi-column dataField="ProjectId" dataType="string" caption="Project Name"></dxi-column>
+          <dxi-column dataField="ProjectAddress" dataType="string" caption="Project Address"></dxi-column>
+          <dxi-column dataField="UnitId" dataType="string" caption="Unit Id"></dxi-column>
+          <dxi-column dataField="ContactId" dataType="string" caption="Contact"></dxi-column>
+          <dxi-column dataField="MobileNo" dataType="string" caption="Phone"></dxi-column>
+          <dxi-column dataField="BookingDate" dataType="date" format="dd-MM-yyyy" caption="Booking Date"></dxi-column>
+          <dxi-column dataField="BookingMoney"  caption="Booking Money"></dxi-column>
+          <dxi-column dataField="DownPaymentDate" dataType="date" format="dd-MM-yyyy" caption="DownPayment Date">
+            <!-- <div *dxTemplate="let cell of 'cellTemplates'">
+              <div *ngIf="cell.data.DownPaymentDate !== 'Invalid Date'; then dataDiv else noDataDiv"></div>
+              <ng-template #dataDiv>{{ cell.data.DownPaymentDate }}</ng-template>
+              <ng-template #noDataDiv>No Date</ng-template>
+            </div> -->
+          </dxi-column>
+          <dxi-column dataField="DownPayment"  caption="Down Payment"></dxi-column>
+          <dxi-column dataField="TotalCost"  caption="Total Amount"></dxi-column>
+        
+          <div *dxTemplate="let details of 'detail'">
+            <dx-data-grid [dataSource]="getdetals(details.data.id)" [columnAutoWidth]="true" [repaintChangesOnly]="true"
+              [showBorders]="true">
+        
+              <dxo-paging [pageSize]="5"></dxo-paging>
+        
+              <dxi-column [width]="100" dataField="SLNo" dataType="number" caption="SL No"></dxi-column>
+              <dxi-column dataField="Particular" dataType="string" caption="Particular"></dxi-column>
+              <dxi-column dataField="Amount" dataType="number" caption="Amount"></dxi-column>
+              <dxi-column dataField="ScheduleDate" dataType="date" format="dd-MM-yyyy" caption="Schedule Date"></dxi-column>
+        
+            </dx-data-grid>
+          </div>
+        </dx-data-grid>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-lg-12">
+    <nb-card>
+      <nb-card-header>
+        <span><h3>Project List</h3></span> 
+        <span class="pull-right"><a nbButton size="xsmall" status="primary" routerLink="create"><i class="lni-plus"></i>  Add New</a></span>
+      </nb-card-header>
+      <nb-card-body>
+        <div>
+          <dx-data-grid id="gridContainer" [dataSource]="dataSource" [masterDetail]="{ enabled: true, template: 'detail' }"
+            keyExpr="id" [showBorders]="true">
+            <dxo-search-panel [visible]="true" [width]="250"></dxo-search-panel>
+            <dxo-selection mode="single"></dxo-selection>
+            <dxo-header-filter [visible]="true"></dxo-header-filter>
+            <dxo-filter-row [visible]="true"></dxo-filter-row>
+            <dxo-export [enabled]="true" fileName="Project" [allowExportSelectedData]="true"></dxo-export>
+            <dxi-column dataField="ProjectName" dataType="string" caption="Project Name"></dxi-column>
+            <dxi-column dataField="ProjectAddress" dataType="string" caption="Project Address"></dxi-column>
+            <dxi-column dataField="HandoverDate" dataType="date" format="dd-MM-yyyy" caption="Handover Date"></dxi-column>
+            <dxi-column dataField="id" caption="Action" [width]="100" [allowFiltering]="false" [allowSorting]="false" cellTemplate="cellTemplate">  
+            </dxi-column>  
+            <div *dxTemplate="let data of 'cellTemplate'">  
+              
+                <a [routerLink]="['view',data.value ]" routerLinkActive="active">  
+                  <!-- <i class="lni-eye actionIcon"></i>   -->
+                  <i class="lni-popup pr-1 actionIcon"></i>
+                </a>
+                <a [routerLink]="['edit',data.value ]" routerLinkActive="active">  
+                  <!-- <i class="lni-pencil actionIcon"></i>   --><i class="lni-pencil actionIcon"></i>
+                </a>  
+                <!-- <form #projectDeleteForm="ngForm" (ngSubmit)="onDeleteSubmit(projectDeleteForm)" novalidate>
+                  <input type="text" name="id" [(ngModel)]="data.value"><br>
+                  <button nbButton size="xsmall" status="default">  Delete</button>
+                </form> -->
+                
+            </div>
+          
+            <div *dxTemplate="let details of 'detail'">
+              <div class="master-detail-caption">{{details.data.ProjectName}}</div>
+              <dx-data-grid [dataSource]="getdetals(details.data.id)" [showBorders]="true" [columnAutoWidth]="true">
+                <dxi-column dataField="Floor" dataType="number" caption="Floor"></dxi-column>
+                <dxi-column dataField="UnitId" dataType="string" caption="Unit"></dxi-column>
+                <dxi-column caption="Status" [width]="150" [allowFiltering]="false" [allowSorting]="false" cellTemplate="Status">  
+                </dxi-column>
+                <div *dxTemplate="let cell of 'Status'" class="d-inline-block">
+                  <div *ngIf="cell.data.Status === 'Offered'">
+                    <span class="badge badge-warning">OFFERED</span>
+                  </div>
+                  <div *ngIf="cell.data.Status === 'Not Sold'">
+                    <span class=" tdl-theme-badge badge badge-danger">NOT SOLD</span>
+                  </div>
+                  <div *ngIf="cell.data.Status === 'Sold'">
+                    <span class=" tdl-theme-badge badge badge-success">SOLD</span>
+                  </div>
+                </div>
+              </dx-data-grid>
+            </div>
+          </dx-data-grid>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

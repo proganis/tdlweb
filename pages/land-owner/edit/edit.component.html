@@ -1,0 +1,137 @@
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header>
+        <div class="addinfo-header col-md-12">
+          Edit Land Owner Information
+        </div>
+        <span class="back-icon position-absolute"> 
+          <a title="Go Back" class="back-button nb-btn-change cursor-pointer" routerLink="/pages/land-owner/list"><i class="lni-reply"></i> </a>
+        </span>
+      </nb-card-header>
+      <nb-card-body>
+        <form #landownerForm="ngForm" (ngSubmit)="onUpdate(landownerForm)" novalidate>
+          <nb-card>     
+            <nb-card-header>
+              <div class="row">
+                <div class="col-md-4">Basic Information</div>
+                <div class="col-md-4">Land Information</div>
+                <div class="col-md-4">Land Owner Requirement</div>
+              </div>
+            </nb-card-header>
+            <nb-card-body>
+              
+              <div class="row">
+      
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="label-space">Name:</label>
+                      <input type="text" nbInput fullWidth fieldSize="small" name="name" [(ngModel)]="editDetails.name">
+                    </div>
+      
+                    <div class="form-group">
+                      <label class="label-space">Mobile No1:</label>
+                      <input type="text" (keypress)="keyPress($event)" nbInput fullWidth fieldSize="small" name="mobileno1" [(ngModel)]="editDetails.mobileno1">
+                    </div>
+      
+                    <div class="form-group">
+                      <label class="label-space">Mobile No2:</label>
+                      <input type="text" (keypress)="keyPress($event)" nbInput fullWidth fieldSize="small" name="mobileno2" [(ngModel)]="editDetails.mobileno2">
+                    </div>
+      
+                    <div class="form-group">
+                      <label class="label-space">Email:</label>
+                      <input type="text" nbInput fullWidth fieldSize="small" name="email" [(ngModel)]="editDetails.email">
+                    </div>
+      
+                    <div class="form-group">
+                      <label class="label-space">LandOwner  Address:</label>
+                      <input type="text" nbInput fullWidth fieldSize="small" name="landowneraddress" [(ngModel)]="editDetails.landowneraddress">
+                    </div>
+                    
+                    <div class="form-group">
+                      <label class="label-space">Land Owner Status:</label>
+                      <dx-select-box
+                        [dataSource]="['Existing Land Owner', 'Prospective Land Owner']" [height]="30" class="selectbox-dx" [(selectedItem)]="landownerstatus" name="landownerstatus" [(ngModel)]="editDetails.landownerstatus">
+                      </dx-select-box>
+                      <!-- <div class="form-group required" id="dd">
+                        <div class="dropdown">
+                        
+                          <nb-select size="small"  placeholder="Select" name="landownerstatus" [(ngModel)]="editDetails.landownerstatus">
+                            <nb-option value="Existing Land Owner">Existing Land Owner</nb-option>
+                            <nb-option value="Prospective Land Owner">Prospective Land Owner</nb-option>
+                          </nb-select>
+                        </div>
+                      </div> -->
+                    </div>
+                </div>  
+                <div class="col-md-4">
+      
+                  <div class="form-group">
+                    <label class="label-space">Area/Location:</label>
+                    <input type="text" nbInput fullWidth fieldSize="small" name="location" [(ngModel)]="editDetails.location">
+                  </div>
+      
+                  <div class="form-group">
+                      <label class="label-space">Address:</label>
+                      <input type="text" nbInput fullWidth fieldSize="small" name="locationaddress" [(ngModel)]="editDetails.locationaddress">
+                  </div>
+      
+                  <div class="form-group">
+                      <label class="label-space">Land Size:</label>
+                      <input type="number" nbInput fullWidth fieldSize="small" placeholder="in KATHA" name="landsize" [(ngModel)]="editDetails.landsize">
+                  </div>
+      
+                  <div class="form-group">
+                    <label class="label-space">Land Size with Road:</label>
+                    <input type="number" nbInput fullWidth fieldSize="small" name="landsizewithroad" [(ngModel)]="editDetails.landsizewithroad">
+                  </div>
+      
+                  <div class="form-group">
+                    <label class="label-space">Facing:</label>
+                    <input type="text" nbInput fullWidth fieldSize="small" name="facing" [(ngModel)]="editDetails.facing">
+                  </div>
+      
+                  <div class="form-group">
+                    <label class="label-space">No Of Owners:</label>
+                    <input type="number" nbInput fullWidth fieldSize="small" name="noofowners" [(ngModel)]="editDetails.noofowners">
+                  </div>
+      
+                </div>
+      
+                <div class="col-md-4">
+                  <div class="form-group">
+                      <label class="label-space">Ratio:</label>
+                      <input type="number" nbInput fullWidth fieldSize="small" name="ratio" [(ngModel)]="editDetails.ratio">
+                  </div>
+      
+                  <div class="form-group">
+                      <label class="label-space">Cash:</label>
+                      <input type="number" nbInput fullWidth fieldSize="small" name="cashamount" [(ngModel)]="editDetails.cashamount">
+                  </div>
+      
+                  <div class="form-group">
+                      <label class="label-space">Storied:</label>
+                      <input type="number" nbInput fullWidth fieldSize="small" name="noofstoreyed" [(ngModel)]="editDetails.noofstoreyed">
+                  </div>
+                </div>
+      
+              </div>
+            
+            </nb-card-body>
+      
+            <nb-card-footer>
+              <div class="text-center">
+                <button class="pr-2" nbButton size="xsmall" class="tdl-theme-bg">  Update</button>
+                <span class="pl-2">
+                  <a  class="hovr-pointr cancle-btn" routerLink="/pages/land-owner/list" nbButton size="xsmall">  Cancel</a>
+                </span>
+              </div>
+            </nb-card-footer>
+          </nb-card>
+
+      </form>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

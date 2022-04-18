@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-md-12">
+	  <nb-card>
+	  <nb-card-body class="calc-padding">
+		 <h1 class="text-center">Welcome To TDL Web Dashboard</h1>
+		 <br><br>
+		<!--<h1 class="text-center">lets strart...</h1> -->
+
+		<div class="row">
+			<div class="col-md-6">
+              
+				<dx-pie-chart id="pie" title="Sales Performance" palette="bright" [dataSource]="dataSourceChart">
+				  <dxi-series argumentField="_id" valueField="count">
+					<dxo-label [visible]="true">
+					  <dxo-connector [visible]="true" [width]="1"></dxo-connector>
+					</dxo-label>
+				  </dxi-series>
+				  <dxo-size [width]="500"></dxo-size>
+				</dx-pie-chart>
+			</div>
+			<div class="col-md-6">
+			<dx-data-grid id="gridContainer" [dataSource]="dataSourceProject" [showBorders]="true">
+				<dxo-selection mode="single"></dxo-selection>
+				<dxo-header-filter [visible]="true"></dxo-header-filter>
+				<dxo-export [enabled]="true" fileName="Project List" [allowExportSelectedData]="true"></dxo-export>
+			
+				<dxi-column dataField="ProjectName" caption="Project Name">
+				</dxi-column>
+				<dxi-column dataField="ProjectAddress" caption="Project Address">
+				</dxi-column>
+				<dxi-column dataField="HandoverDate" dataType="date" format="dd-MM-yyyy" caption="HandoverDate">
+				</dxi-column>
+				
+				<!-- <dxo-paging class="tweleveGridPagr" [pageSize]="20"></dxo-paging>  -->
+				<dxo-group-panel [visible]="true"></dxo-group-panel>
+				<dxo-grouping #expand [autoExpandAll]="true"></dxo-grouping>
+			</dx-data-grid>
+			</div>	
+		</div>
+	  </nb-card-body>
+	  </nb-card>
+  </div>    
+</div>

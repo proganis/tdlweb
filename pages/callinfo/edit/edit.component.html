@@ -1,0 +1,134 @@
+<div class="row">
+  <div class="col-md-8">
+    <form #callinfoForm="ngForm" (ngSubmit)="onUpdate(callinfoForm)" novalidate>
+    <nb-card>
+      
+      <nb-card-header>
+        <div class="addinfo-header col-md-12">
+          Edit Call Information
+        </div>
+        <span class="back-icon position-absolute"> 
+          <a title="Go Back" class="back-button nb-btn-change cursor-pointer" routerLink="/pages/callinfo/list"><i class="lni-reply"></i> </a>
+        </span>
+      </nb-card-header>
+      <nb-card-body>
+        <div class="row">
+          <div class="col-md-6">
+
+            <div class="form-group">
+              <label class="label-space">Type:</label>
+              <dx-select-box
+                  [dataSource]="['Scheduled Call', 'Normal Call']" [height]="30" class="selectbox-dx" name="Type" [(ngModel)]="editDetails.Type">
+              </dx-select-box>
+
+              <!-- <div class="form-group required" id="dd">
+                <div class="dropdown">
+                  <nb-select size="small"  placeholder="Select" name="Type" [(ngModel)]="editDetails.Type">
+                    <nb-option value="Scheduled Call">Scheduled Call</nb-option>
+                    <nb-option value="Normal Call">Normal Call</nb-option>
+                  </nb-select>
+                </div>
+              </div> -->
+            </div>
+
+            <div class="form-group">
+              <label class="label-space">Contact</label>
+
+              <dx-select-box
+              [dataSource]="customerList" [height]="30" class="selectbox-dx" name="Contact" [(ngModel)]="editDetails.Contact">
+              </dx-select-box>
+
+              <!-- <div class="form-group required" id="dd">
+                <div class="dropdown">
+                
+                  <nb-select size="small"  placeholder="Select" name="Contact" [(ngModel)]="editDetails.Contact">
+                    <nb-option *ngFor="let name of customerList" value="{{name}}">{{name}}</nb-option>
+                  </nb-select>
+                </div>
+              </div> -->
+            </div>
+
+            <div class="form-group">
+              <label class="label-space">Subject *:</label>
+              <input type="text" nbInput fullWidth fieldSize="small" name="Subject" [(ngModel)]="editDetails.Subject">
+            </div>
+            
+            <div class="form-group">
+              <label class="label-space">CallPurpose:</label>
+              <input type="text" nbInput fullWidth fieldSize="small" name="CallPurpose" [(ngModel)]="editDetails.CallPurpose">
+            </div>
+
+            <div class="form-group">
+              <label class="label-space">Call Type:</label>
+
+              <dx-select-box
+                [dataSource]="['Incoming', 'Outgoing']" [height]="30" class="selectbox-dx" name="CallType" [(ngModel)]="editDetails.CallType">
+            </dx-select-box>
+
+              <!-- <div class="form-group required" id="dd">
+                <div class="dropdown">
+                  <nb-select size="small"  placeholder="Select" name="CallType" [(ngModel)]="editDetails.CallType">
+                    <nb-option value="Incoming">Incoming</nb-option>
+                    <nb-option value="Outgoing">Outgoing</nb-option>
+                  </nb-select>
+                </div>
+              </div> -->
+            </div>
+          </div>
+
+          <div class="col-md-6">
+
+            <div class="form-group">
+              <label class="label-space">Call Start time:</label>
+              <input type="time" class="form-control" name="CallStarttime" [(ngModel)]="editDetails.CallStarttime">
+            </div>
+            // Account,
+
+            <div class="form-group">
+              <label class="label-space">Call Duration:</label>
+              <input type="text" nbInput fullWidth fieldSize="small" name="CallDuration" [(ngModel)]="editDetails.CallDuration">
+            </div>
+
+            <div class="form-group">
+              <label class="label-space">Description:</label>
+              <input type="text" nbInput fullWidth fieldSize="small" name="Description" [(ngModel)]="editDetails.Description">
+            </div>
+
+            <div class="form-group">
+              <label class="label-space">Call Result:</label>
+
+              <dx-select-box
+                [dataSource]="['Interest', 'Not Interest']" [height]="30" class="selectbox-dx" name="CallResult" [(ngModel)]="editDetails.CallResult">
+            </dx-select-box>
+
+              <!-- <div class="form-group required" id="dd">
+                <div class="dropdown">
+                  <nb-select size="small"  placeholder="Select" name="CallResult" [(ngModel)]="editDetails.CallResult">
+                    <nb-option value="Interest">Interest</nb-option>
+                    <nb-option value="Not Interest">Not Interest</nb-option>
+                  </nb-select>
+                </div>
+              </div> -->
+            </div>
+
+            <div class="form-group">
+              <label class="label-space">Next Call Date:</label>
+              <input type="date" class="form-control" name="Account" [(ngModel)]="editDetails.Account">
+            </div>
+          </div>
+        </div>
+      
+      </nb-card-body>
+
+      <nb-card-footer>
+        <div class="text-center">
+          <button class="pr-3" nbButton size="xsmall" class="tdl-theme-bg">Update</button>
+          <span class="pl-3">
+            <a  class="hovr-pointr cancle-btn" routerLink="/pages/callinfo/list" nbButton size="xsmall">  Cancel</a>
+          </span>
+        </div>
+      </nb-card-footer>
+    </nb-card>
+  </form>
+  </div>
+</div>

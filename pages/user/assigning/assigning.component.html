@@ -1,0 +1,99 @@
+<div class="row">
+  <div class="col-lg-12">
+    <nb-card>
+      <nb-card-header>Project Assigning</nb-card-header>
+      <nb-card-body>
+
+        <div class="row justify-content-center">
+
+          <div class="col-md-3" id="drpdwnrow">
+            <h5 id="sp"> Sales Man:</h5>
+            <div class="dropdown" id="dd">
+              <nb-select placeholder="{{selectedSalesManName}}">
+                <nb-option *ngFor="let single of allsalesMan" (click)="selectSalesMan(single._id, single.name)">
+                  {{single.name}}</nb-option>
+              </nb-select>
+            </div>
+
+
+          </div>
+
+          <div class="col-md-3" id="drpdwnrow">
+            <h5 id="sp"> Projects :</h5>
+            <div class="dropdown" id="dd">
+              <nb-select placeholder="{{selectedProjectName}}">
+                <nb-option *ngFor="let single of projects" (click)="selectProject(single.id)">{{single.ProjectName}}
+                </nb-option>
+              </nb-select>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div *ngIf="table" class="" id="table">
+          <h3> Project Details show </h3>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">Floor</th>
+                <th scope="col">Size</th>
+                <th scope="col">Rate</th>
+                <th scope="col">Unit Id</th>
+                <th scope="col">Status</th>
+                <th scope="col">Select</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of unsoldFloor">
+                <td scope="row">{{item.Floor}}</td>
+                <td scope="row">{{item.Size}}</td>
+                <td scope="row">{{item.Rate}}</td>
+                <td scope="row">{{item.UnitId}}</td>
+                <td scope="row">{{item.Status}}</td>
+                <td scope="row"> <input type="checkbox" (change)="selectedFloor(item,$event)" /> </td>
+              </tr>
+            </tbody>
+          </table>
+          
+        </div>
+
+
+        <div *ngIf="table2" class="mt-3" id="table">
+          <h3> Previously Assigned Projects ({{ selectedProjectName }})</h3>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">Floor</th>
+                <th scope="col">Unit Id</th>
+                <th scope="col">Status</th>
+                <th scope="col">Select</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr *ngFor="let item of sm3">
+                <td scope="row">{{item.Floor}}</td>
+
+                <td scope="row">{{item.UnitId}}</td>
+                <td scope="row">{{item.Status}}</td>
+                <td scope="row"> <input type="checkbox" (change)="selectedFloor(item,$event)" checked /> </td>
+
+              </tr>
+            </tbody>
+          </table>
+
+          
+
+        </div>
+        
+        <div *ngIf="showassign" class="text-right">
+          <button nbButton (click)="showResult()" id="assbt"> Assign</button>
+        </div>
+        
+       
+      </nb-card-body>
+    </nb-card>
+
+  </div>
+</div>

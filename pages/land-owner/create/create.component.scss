@@ -1,0 +1,14 @@
+.label-space{
+    font-weight: bold;
+}
+
+.reset-button {
+    background-color:  #16c925;
+    font-size: 1rem;
+    border-radius: 7px;
+  
+}
+.reset-button:hover,.reset-button:focus, .reset-button:active, .reset-button:active:focus {
+    background-color: #14dc24;
+    border-color:transparent;
+} 

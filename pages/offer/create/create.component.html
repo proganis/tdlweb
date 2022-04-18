@@ -1,0 +1,232 @@
+<div class="row">
+  <div class="col-md-8">
+    <nb-card>
+      <nb-card-header>
+        <div class="addinfo-header">
+          Create New Offer
+        </div>
+        <span class="back-icon position-absolute"> 
+          <a title="Go Back" class="back-button nb-btn-change cursor-pointer" routerLink="/pages/offer/list"><i class="lni-reply"></i> </a>
+        </span>
+      </nb-card-header>
+      <nb-card-body>
+        <form #offerForm="ngForm" novalidate>
+          <div class="row">
+            <div class="col-md-6">
+
+              <div class="form-group">
+                <label class="label-space required">Project Name: <span class="text-danger">*</span></label>
+                <dx-select-box
+                  [items]="projectList" [height]="30" class="selectbox-dx" [(selectedItem)]="ProjectId" name="ProjectId" ngModel
+                  (onValueChanged)="onChange($event)" required >
+                </dx-select-box>
+                <!-- <div class="form-group required" id="dd">
+                  <div class="dropdown">
+                  
+                    <nb-select size="small" placeholder="Select" name="ProjectId" ngModel (selectedChange)="onChange($event)">
+                      <nb-option *ngFor="let project of projectList" value="{{project}}">{{project}}</nb-option>
+                    </nb-select>
+                  </div>
+                </div> -->
+              </div>
+
+              <div class="form-group">
+                <label class="label-space">Project Address:<span class="text-danger">*</span></label>
+                <input type="text" nbInput fullWidth fieldSize="small" name="ProjectAddress" [(ngModel)]="ProjectAddress" required>
+              </div>
+
+
+              <div class="form-group">
+                <label class="label-space required">Unit List:  <span class="text-danger">*</span></label>
+                <!-- [dataSource]="projectDetails" displayExpr="Floor+UnitId" [height]="30" class="selectbox-dx"> -->
+                <!-- <dx-select-box
+                  [items]="projectDetails" [height]="30" class="selectbox-dx"
+                  (onValueChanged)="onChangeUnitId($event)">
+                </dx-select-box> -->
+                 <div class="form-group required" id="dd">
+                  <div class="dropdown">
+                  
+                    <nb-select size="small" placeholder="Select" name="UnitId" ngModel (selectedChange)="onChangeUnitId($event)" required>
+                      <nb-option *ngFor="let detail of projectDetails" value="{{detail.Floor+'-'+detail.UnitId+'-'+detail.Size+'-'+detail.Rate+'-'+detail.UnitDirection}}">{{ detail.Floor+"-"+detail.UnitId}}</nb-option>
+                    </nb-select>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label class="label-space">Direction:</label>
+                <input type="text" nbInput fullWidth fieldSize="small" name="Direction" [(ngModel)]="Direction">
+              </div>
+
+              <div class="form-group">
+                <label class="label-space">Floor No:<span class="text-danger">*</span></label>
+                <input type="text" nbInput fullWidth fieldSize="small" name="FloorNo" [(ngModel)]="FloorNo" required>
+              </div>
+
+              <div class="form-group">
+                  <label class="label-space">Floor Area:</label>
+                  <input type="text" nbInput fullWidth fieldSize="small" name="FloorArea" [(ngModel)]="FloorArea">
+              </div>
+
+              <div class="form-group">
+                <label class="label-space">Rate Per Sft:</label>
+                <input type="text" nbInput fullWidth fieldSize="small" name="RatePerSft" [(ngModel)]="RatePerSft">
+              </div>
+
+              <div class="form-group">
+                <label class="label-space">Unit Cost:</label>
+                <input type="text" nbInput fullWidth fieldSize="small" name="UnitCost" [(ngModel)]="UnitCost">
+              </div>
+
+              <div class="form-group">
+                <label class="label-space">Parking Cost:</label>
+                <input type="number" nbInput fullWidth fieldSize="small" name="ParkingCost" (blur)="onBlurMethod1()" [(ngModel)]="ParkingCost" >
+              </div>
+
+              <div class="form-group">
+                <label class="label-space">Total Cost:</label>
+                <input type="number" nbInput fullWidth fieldSize="small" name="TotalCost" [(ngModel)]="TotalCost">
+              </div>
+
+              <div class="form-group">
+                <label class="label-space">Booking Money Rate:</label>
+                <input type="number" nbInput fullWidth fieldSize="small" name="BookingMoneyRate" (blur)="calculateBookingMoney()" [(ngModel)]="BookingMoneyRate">
+              </div>
+
+              <div class="form-group">
+                  <label class="label-space">Booking Money:</label>
+                  <input type="number" nbInput fullWidth fieldSize="small" name="BookingMoney" [(ngModel)]="BookingMoney">
+              </div>
+
+              <div class="form-group">
+                <label class="label-space">Booking Date:</label>
+                <input type="date" class="form-control" name="BookingDate" (ngModelChange)="modelChanged($event)" [(ngModel)]="BookingDate">
+              </div>
+
+              <!-- <div class="form-group">
+                <button type="submit" class="btnSubmit pull-right" nbButton size="xsmall" status="default"  (click)="onSubmit(offerForm)">  Submit</button>
+              </div> -->
+              
+            </div>
+            
+            <div class="col-md-6">
+
+              <div class="form-group">
+                <label class="label-space">Down Payment Rate:</label>
+                <input type="number" nbInput fullWidth fieldSize="small" name="DownPaymentRate" (blur)="calculateDownPayment()" [(ngModel)]="DownPaymentRate">
+              </div>
+  
+              <div class="form-group">
+                <label class="label-space">Down Payment:</label>
+                <input type="text" nbInput fullWidth fieldSize="small" name="DownPayment" [(ngModel)]="DownPayment">
+              </div>
+              
+              <div class="form-group">
+                <label class="label-space">Down Payment Date:</label>
+                <input type="date" class="form-control" name="DownPaymentDate" (ngModelChange)="modelChanged1($event)" [(ngModel)]="DownPaymentDate">
+              </div>
+  
+              <div class="form-group">
+                <label class="label-space required">Payment Type:<span class="text-danger">*</span></label>
+                <dx-select-box
+                [dataSource]="['Monthly', 'By Monthly', 'Quarterly']" [height]="30" class="selectbox-dx" [(selectedItem)]="InstallpaymentType" name="InstallpaymentType" ngModel required>
+                </dx-select-box>
+                <!-- <div class="form-group required" id="dd">
+                  <div class="dropdown">
+                  
+                    <nb-select size="small"  placeholder="Select" name="InstallpaymentType" ngModel>
+                      <nb-option value="Monthly">Monthly</nb-option>
+                      <nb-option value="By Monthly">By Monthly</nb-option>
+                      <nb-option value="Quarterly">Quarterly</nb-option>
+                    </nb-select>
+                  </div>
+                </div> -->
+              </div>
+
+              <div class="form-group">
+                <label class="label-space required">Coustomer Name: <span class="text-danger">*</span></label>
+                <dx-select-box
+                [dataSource]="customerList" [height]="30" class="selectbox-dx" [(selectedItem)]="ContactId" name="ContactId" ngModel required>
+                </dx-select-box>
+                <!-- <div class="form-group required" id="dd">
+                  <div class="dropdown">
+                  
+                    <nb-select size="small"  placeholder="Select" name="ContactId" ngModel>
+                      <nb-option *ngFor="let name of customerList" value="{{name}}">{{name}}</nb-option>
+                    </nb-select>
+                  </div>
+                </div> -->
+              </div>
+
+              <div class="form-group">
+                <label class="label-space">Hand Over Date:</label>
+                <input type="date" class="form-control" name="HandOverTime" [(ngModel)]="HandOverTime">
+              </div>
+
+
+              <div class="form-group">
+                <label class="label-space">Registration Cost:</label>
+                <input type="text" nbInput fullWidth fieldSize="small" name="RegistrationCost" ngModel>
+              </div>
+
+              <!-- <div class="form-group">
+                <label class="label-space">Direction:</label>
+                <input type="text" nbInput fullWidth fieldSize="small" name="Direction" [(ngModel)]="Direction">
+              </div> -->
+              
+              <div class="form-group">
+                <label class="label-space">Other Cost:</label>
+                <input type="text" nbInput fullWidth fieldSize="small" name="OthersCost" ngModel>
+              </div>
+
+              <div class="form-group">
+                <label class="label-space">Additional Cost:</label>
+                <input type="number" nbInput fullWidth fieldSize="small" name="Additioncost" ngModel>
+              </div>
+
+              <div class="form-group">
+                <label class="label-space">Utility Connection Cost:</label>
+                <input type="number" nbInput fullWidth fieldSize="small" name="UtilityConnectionCost" ngModel>
+              </div>
+
+              <div class="form-group">
+                <label class="label-space">Reserve Fund:</label>
+                <input type="text" nbInput fullWidth fieldSize="small" name="ReserveFund" ngModel>
+              </div>
+
+              <div class="form-group">
+                <label class="label-space">No Of Installment:</label>
+                <input type="number" nbInput fullWidth fieldSize="small" name="NoOfInstallpayment" (blur)="onBlurMethod2()" [(ngModel)]="NoOfInstallpayment">
+              </div>
+
+              <div class="form-group">
+                <label class="label-space">Amount Per Installment:</label>
+                <input type="number" nbInput fullWidth fieldSize="small" name="AmountPerInstallment" [(ngModel)]="AmountPerInstallment">
+              </div>
+
+              <!-- <div class="form-group">
+                <a class="btnSubmit" nbButton size="xsmall" status="warning" routerLink="/pages/offer/list">  Cancel</a>
+              </div> -->
+
+            </div>
+            
+          </div>
+
+        </form>
+      </nb-card-body>
+      <nb-card-footer>
+
+        <div class="col-md-12">
+          <div class="form-group text-center">
+            <span class="pr-2">
+              <button type="submit" [disabled]="offerForm.invalid" (click)="onSubmit(offerForm)" class="ml-2 hovr-pointr tdl-theme-bg" nbButton size="xsmall" status="default">  Submit</button>
+              <span class="pl-2">
+              <a  class="hovr-pointr cancle-btn" routerLink="/pages/offer/list" nbButton size="xsmall">  Cancel</a>
+            </span>
+            </span>
+          </div>
+        </div>
+      </nb-card-footer>
+    </nb-card>
+  </div>
+</div>

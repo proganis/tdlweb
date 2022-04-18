@@ -1,0 +1,239 @@
+<div class="row">
+  <div class="col-md-8">
+    <nb-card>
+      <nb-card-header>
+        <div class="addinfo-header">Create New Project</div> 
+        <span class="back-icon position-absolute"> 
+          <a title="Go Back" class="back-button nb-btn-change cursor-pointer" routerLink="/pages/project/list"><i class="lni-reply"></i> </a>
+        </span>
+      </nb-card-header>
+      <nb-card-body>
+        <form #projectForm="ngForm" novalidate>
+          <div class="row">
+            <div class="col-md-6">
+
+              <div class="form-group">
+                  <label  class="label-space">Project Name:<span class="text-danger">*</span></label>
+                  <input type="text" nbInput fullWidth fieldSize="small" name="ProjectName" ngModel required>
+              </div>
+
+              <div class="form-group">
+                <label class="label-space">Project Address:<span class="text-danger">*</span></label>
+                <input type="email" nbInput fullWidth fieldSize="small" name="ProjectAddress" ngModel required>
+              </div>
+
+              <div class="form-group">
+                <label class="label-space required">Project Type: <span class="text-danger">*</span>  </label>
+                <dx-select-box
+                  [dataSource]="['Commercial', 'Residential']" [height]="30" class="selectbox-dx" [(selectedItem)]="ProjectType" name="ProjectType" ngModel required>
+                </dx-select-box>
+                <!-- <div class="form-group required" id="dd">
+                  <div class="dropdown">
+                  
+                    <nb-select size="small"  placeholder="Select" name="ProjectType" ngModel>
+                      <nb-option value="Commercial">Commercial</nb-option>
+                      <nb-option value="Residential">Residential</nb-option>
+                    </nb-select>
+                  </div>
+                </div> -->
+              </div>
+
+              <div class="form-group">
+                <label class="label-space required">Land Owner Name: <span class="text-danger">*</span></label>
+
+                <dx-select-box
+                  [dataSource]="landownerList" [height]="30" class="selectbox-dx" [(selectedItem)]="LoName" name="LoName" ngModel required>
+                </dx-select-box>
+
+                <!-- <div class="form-group required" id="dd">
+                  <div class="dropdown">
+                  
+                    <nb-select size="small"  placeholder="Select" name="LoName" ngModel>
+                      <nb-option *ngFor="let name of landownerList" value="{{name}}">{{name}}</nb-option>
+                    </nb-select>
+                  </div>
+                </div> -->
+                <!-- <input type="text" nbInput fullWidth fieldSize="small" name="LoName" ngModel> -->
+              </div>
+
+              <div class="form-group">
+                  <label class="label-space">Land Area:</label>
+                  <input type="text" nbInput fullWidth fieldSize="small" name="LandArea" ngModel>
+              </div>
+
+              <div class="form-group">
+                <label class="label-space">How many Storied:<span class="text-danger">*</span></label>
+                <input type="text" nbInput fullWidth fieldSize="small" name="Storied" ngModel>
+            </div>
+
+            <div class="form-group">
+              <label class="label-space">Rajuk Approval Date:</label>
+              <input type="date" class="form-control" name="ApproveDate" [(ngModel)]="ApproveDate">
+            </div>
+
+            <div class="form-group">
+              <label class="label-space">Taking Date from Land Owner:</label>
+              <input type="date" class="form-control" name="TakingDate" [(ngModel)]="TakingDate">
+            </div>
+
+            <div class="form-group">
+              <label class="label-space">Total Unit:</label>
+              <input type="text" (keypress)="keyPress($event)" nbInput fullWidth fieldSize="small" name="TotalUnit" ngModel [(ngModel)]="TotalUnit">
+            </div>
+
+            <div class="form-group">
+              <label class="label-space">TDL Unit:</label>
+              <input type="text" (keypress)="keyPress($event)" nbInput fullWidth fieldSize="small" name="TdlUnit" (blur)="onBlurMethod()" [(ngModel)]="TdlUnit">
+            </div>
+
+            <div class="form-group">
+              <label class="label-space">Land Owner Unit:</label>
+              <input type="number" step="1" nbInput fullWidth fieldSize="small" name="LoUnit" [(ngModel)]="LoUnit">
+            </div>
+             
+            </div>
+
+            <div class="col-md-6">
+
+              <div class="form-group">
+                <label class="label-space">Total Parking:</label>
+                <input type="text" (keypress)="keyPress($event)" nbInput fullWidth fieldSize="small" name="TotalParking" [(ngModel)]="TotalParking">
+              </div>
+
+              <div class="form-group">
+                <label class="label-space">TDL Parking:</label>
+                <input type="text" (keypress)="keyPress($event)" nbInput fullWidth fieldSize="small" name="TdlParking" (blur)="onBlurMethod1()" [(ngModel)]="TdlParking">
+              </div>
+
+              <div class="form-group">
+                  <label class="label-space">Land Owner parking:</label>
+                  <input type="number" step="1" nbInput fullWidth fieldSize="small" name="LoParking" [(ngModel)]="LoParking">
+              </div>
+              
+              <div class="form-group">
+                <label class="label-space">Hand Over Date:</label>
+                <input type="date" class="form-control" name="HandoverDate" (ngModelChange)="modelChanged($event)" [(ngModel)]="HandoverDate">
+              </div>
+
+              <div class="form-group">
+                <label class="label-space">Hand Over Date for client:</label>
+                <input type="date" class="form-control" name="HandoverDateClient" (ngModelChange)="modelChanged($event)" [(ngModel)]="HandoverDateClient">
+              </div>
+
+              <div class="form-group">
+                <label class="label-space">Grace Time in Month:</label>
+                <input type="text" nbInput fullWidth fieldSize="small" name="GraceTime" ngModel>
+              </div>
+
+              <div class="form-group">
+                <label class="label-space">Hand Over Date after Grace Time:</label>
+                <input type="date" class="form-control" name="HandoverDateafterGrace" ngModel>
+              </div>
+
+              <div class="form-group">
+                <label class="label-space">Compensation Star Date:</label>
+                <input type="date" class="form-control" name="CompensationStart" (ngModelChange)="modelChanged1($event)" [(ngModel)]="CompensationStart">
+                <!-- <input type="date" class="form-control" name="CompensationStart" (blur)="handler(event);" [(ngModel)]="CompensationStart"> -->
+              </div>
+
+              <div class="form-group">
+                <label class="label-space">Land Owner Rate:</label>
+                <input type="text" nbInput fullWidth fieldSize="small" name="LoRate" ngModel>
+              </div>
+  
+              <div class="form-group">
+                <label class="label-space">Client Rate:</label>
+                <input type="text" nbInput fullWidth fieldSize="small" name="ClientRate" ngModel>
+              </div>
+
+            </div>
+            
+          </div>
+
+          <div class="row">
+          
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Floor</th>
+                    <th scope="col">Unit</th>
+                    <th scope="col">Unit Direction</th>
+                    <th scope="col">Size</th>
+                    <th scope="col">Rate</th>
+                    <th scope="col">
+                      <button  nbButton size="xsmall" status="default" (click)="addNewInput()">  <i class="lni-plus"></i></button>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let projectDetail of inputProjectDetails; let i = index;">
+                    <td>
+                      <div class="form-group">
+                        <input type="text" nbInput fullWidth fieldSize="small" name="Floor{{i}}" [(ngModel)]="projectDetail.Floor">
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <input type="text" nbInput fullWidth fieldSize="small" name="UnitId{{i}}" [(ngModel)]="projectDetail.UnitId">
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <input type="text" nbInput fullWidth fieldSize="small" name="UnitDirection{{i}}" [(ngModel)]="projectDetail.UnitDirection">
+                      </div>
+                    </td>
+                     
+                    <td>
+                      <div class="form-group">
+                        <input type="text" nbInput fullWidth fieldSize="small" name="Size{{i}}" [(ngModel)]="projectDetail.Size">
+                      </div>
+                    </td> 
+                    <td>
+                      <div class="form-group">
+                        <input type="text" nbInput fullWidth fieldSize="small" name="Rate{{i}}" [(ngModel)]="projectDetail.Rate">
+                      </div>
+                    </td>
+                    <td><button type="button" nbButton status="danger" size="xsmall" (click)="removeInput(i)"><i class="lni-circle-minus"></i></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- <div class="text-RIGHT">
+              <a class="hovr-pointr cancle-btn" nbButton size="xsmall" routerLink="/pages/contact/list">  Cancel</a>
+              <button class="ml-3 hovr-pointr tdl-theme-bg" nbButton size="xsmall" status="default">  Submit</button>
+            </div> -->
+
+
+            <div class="col-md-12">
+              <div class="form-group text-center">
+                <span class="pr-2">
+                  <button type="submit" (click)="onSubmit(projectForm)" class="ml-2 hovr-pointr tdl-theme-bg" nbButton size="xsmall" status="default" [disabled]="projectForm.invalid">  Submit</button>
+                </span>
+                <span class="pl-2" >
+                <a  class="hovr-pointr cancle-btn" routerLink="/pages/project/list" nbButton size="xsmall">  Cancel</a>
+              </span>
+              </div>
+            </div>
+               
+
+
+            <!-- <div class="col-md-6">
+              <div class="form-group">
+                <button type="submit" class="btnSubmit pull-right" nbButton size="xsmall" status="default"  (click)="onSubmit(projectForm)">  Submit</button>
+              </div>
+              </div>
+              <div class="col-md-6">
+              <div class="form-group">
+                <a class="btnSubmit" nbButton size="xsmall" status="warning" routerLink="/pages/project/list">  Cancel</a>
+              </div>
+            </div> -->
+          </div>
+
+      </form>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

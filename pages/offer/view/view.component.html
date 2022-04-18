@@ -1,0 +1,163 @@
+<div class="row">
+  <div class="col-md-8">
+
+    <nb-card>
+      <nb-card-header >
+        <span class="addinfo-header"> Offer </span>
+
+        <span class="back-icon position-absolute"> 
+          <a title="Go Back" class="back-button nb-btn-change cursor-pointer" routerLink="/pages/offer/list"><i class="lni-reply"></i> </a>
+        </span>
+      </nb-card-header>
+    <nb-card-body class="position-relative pt-0">
+       <nb-tabset class="tdl-web-tabset">
+         <nb-tab tabTitle="Project Details" tabIcon="lni-list" responsive>
+         
+           <div class="table-responsive pt-2">
+             <table class="table">
+               <tbody>
+                 <tr class="d-flex" >
+                   <th class="col-md-4 border-top-0" scope="row">Customer Name:</th>
+                   <td class="col-md-8 border-top-0">{{ viewDetails.ContactId}}</td>
+                 </tr>
+                 <tr class="d-flex" >
+                   <th class="col-sm-4" scope="row">Project Name:</th>
+                   <td class="col-sm-8">{{ viewDetails.ProjectId}}</td>
+                 </tr>
+                 <tr class="d-flex" >
+                   <th class="col-sm-4" scope="row">Project Address:</th>
+                   <td class="col-sm-8">{{ viewDetails.ProjectAddress}}</td>
+                 </tr>
+                 <tr class="d-flex" >
+                   <th class="col-sm-4" scope="row">Direction:</th>
+                   <td class="col-sm-8">{{ viewDetails.Direction}}</td>
+                 </tr>
+                 <tr class="d-flex" >
+                   <th class="col-sm-4" scope="row">Unit Details:</th>
+                   <td class="col-sm-8">{{ viewDetails.UnitId}}</td>
+                 </tr>
+                 <tr class="d-flex" >
+                   <th class="col-sm-4" scope="row">Floor No:</th>
+                   <td class="col-sm-8">{{ viewDetails.FloorNo}}</td>
+                 </tr>
+                 <tr class="d-flex" >
+                   <th class="col-sm-4" scope="row">Floor Area:</th>
+                   <td class="col-sm-8">{{ viewDetails.FloorArea}}</td>
+                 </tr>
+                 <tr class="d-flex" >
+                   <th class="col-sm-4" scope="row">Hand Over Time:</th>
+                   <td class="col-sm-8"><span class="tdl-theme-badge badge badge-success">{{ viewDetails.HandOverTime}}</span> </td>
+                 </tr>
+                 
+               </tbody>
+             </table>
+           </div>
+   
+         </nb-tab>
+   
+         <nb-tab tabTitle="Payment Details" tabIcon="lni-investment" responsive>
+           
+           <div class="table-responsive pt-2">
+             <table class="table">
+               
+               <tbody>
+                 <tr class="d-flex" >
+                   <th class="col-sm-4 border-top-0" scope="row">Install Payment Type:</th>
+                   <td class="col-sm-8 border-top-0">{{ viewDetails.InstallpaymentType }}</td>
+                 </tr>
+                 <tr class="d-flex" >
+                   <th class="col-sm-4" scope="row">No Of Install Payment:</th>
+                   <td class="col-sm-8">{{ viewDetails.NoOfInstallpayment}}</td>
+                 </tr>
+                 <tr class="d-flex" >
+                   <th class="col-sm-4" scope="row">Amount Per Installment:</th>
+                   <td class="col-sm-8">{{ viewDetails.AmountPerInstallment }}</td>
+                 </tr>
+                 <tr class="d-flex" >
+                   <th class="col-sm-4" scope="row">Down Payment Rate:</th>
+                   <td class="col-sm-8">{{ viewDetails.DownPayment}}</td>
+                 </tr>
+                 <tr class="d-flex" >
+                   <th class="col-sm-4" scope="row">Down Payment Rate:</th>
+                   <td class="col-sm-8">{{ viewDetails.DownPaymentRate}}</td>
+                 </tr>
+                 <tr class="d-flex" >
+                   <th class="col-sm-4" scope="row">Down Payment Date:</th>
+                   <td class="col-sm-8">{{ viewDetails.DownPaymentDate}}</td>
+                 </tr>
+                 <tr class="d-flex" >
+                   <th class="col-sm-4" scope="row">Booking Money:</th>
+                   <td class="col-sm-8">{{ viewDetails.BookingMoney}}</td>
+                 </tr>
+                 
+                 <tr class="d-flex" >
+                   <th class="col-sm-4" scope="row">Booking Money Rate:</th>
+                   <td class="col-sm-8">{{ viewDetails.BookingMoneyRate}}</td>
+                 </tr>
+                 <tr class="d-flex" >
+                   <th class="col-sm-4" scope="row">Booking Date:</th>
+                   <td class="col-sm-8">{{ viewDetails.BookingDate}}</td>
+                 </tr>
+                
+               </tbody>
+             </table>
+           </div>
+           
+         </nb-tab>
+   
+         <nb-tab tabTitle="Cost Details" tabIcon="lni-invest-monitor" responsive>
+          
+           <div class="table-responsive pt-2">
+             <table class="table">
+               <tbody>
+                 <tr class="d-flex" >
+                   <th class="col-sm-4 border-top-0" scope="row">Total Cost:</th>
+                   <td class="col-sm-8 border-top-0">{{ viewDetails.TotalCost}}</td>
+                 </tr>
+                 <tr class="d-flex" >
+                   <th class="col-sm-4" scope="row">Addition Cost:</th>
+                   <td class="col-sm-8">{{ viewDetails.Additioncost }}</td>
+                 </tr>
+                 <tr class="d-flex" >
+                   <th class="col-sm-4" scope="row">Reserve Fund:</th>
+                   <td class="col-sm-8">{{ viewDetails.ReserveFund }}</td>
+                 </tr>
+                 <tr class="d-flex" >
+                   <th class="col-sm-4" scope="row">Utility Connection Cost:</th>
+                   <td class="col-sm-8">{{ viewDetails.UtilityConnectionCost }}</td>
+                 </tr>
+                 <tr class="d-flex" >
+                   <th class="col-sm-4" scope="row">Registration Cost:</th>
+                   <td class="col-sm-8">{{ viewDetails.RegistrationCost }}</td>
+                 </tr>
+                 <tr class="d-flex" >
+                   <th class="col-sm-4" scope="row">Unit Cost:</th>
+                   <td class="col-sm-8">{{ viewDetails.UnitCost }}</td>
+                 </tr>
+                 <tr class="d-flex" >
+                   <th class="col-sm-4" scope="row">Parking Cost:</th>
+                   <td class="col-sm-8">{{ viewDetails.ParkingCost }}</td>
+                 </tr>
+                 <tr class="d-flex" >
+                   <th class="col-sm-4" scope="row">Others Cost:</th>
+                   <td class="col-sm-8">{{ viewDetails.OthersCost }}</td>
+                 </tr>
+                 <tr class="d-flex" >
+                  <th class="col-sm-4" scope="row">Rate Per Sft:</th>
+                  <td class="col-sm-8">{{ viewDetails.RatePerSft}}</td>
+                </tr>
+                
+               </tbody>
+             </table>
+           </div>
+   
+         </nb-tab>
+       </nb-tabset>
+   
+     </nb-card-body>
+</nb-card>
+  </div>
+
+</div>
+
+

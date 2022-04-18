@@ -1,0 +1,104 @@
+<div class="row">
+		<div class="col-lg-12">
+	
+	
+	
+	
+			<nb-card> <nb-card-header>User</nb-card-header> <nb-card-body>
+			<form #usrForm="ngForm" (ngSubmit)="onSubmit()"
+				class="form-horizontal">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group required">
+							<label for="fullName">Full Name</label> <input name="fullName"
+								[(ngModel)]="user.fullName" required id="fullName" type="text"
+								class="form-control">
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="govtId">Govt Id</label> <input name="govtId"
+								[(ngModel)]="user.govtId" id="govtId" type="text"
+								class="form-control">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group required">
+							<label for="userName">Username</label> <input name="userName"
+								[(ngModel)]="user.userName" requied id="userName" type="text"
+								class="form-control">
+						</div>
+					</div>
+					<div class="col-sm-6" *ngIf="!user.editing">
+						<div class="form-group required">
+							<label for="password">Password</label> <input name="password"
+								[(ngModel)]="user.password" required id="password" type="text"
+								class="form-control">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group required">
+							<label for="mobile">Mobile</label> <input name="mobile"
+								[(ngModel)]="user.mobile" required [maxlength]="200" id="mobile"
+								type="text" class="form-control">
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group required">
+							<label for="email">Email</label> <input nbInput name="email"
+								[(ngModel)]="user.email" pattern=".+@.+\..+" required id="email"
+								type="text" class="form-control" #email="ngModel"
+								[status]="email.dirty ? (email.invalid  ? 'danger' : 'success') : ''"
+								[required]="true"
+								[attr.aria-invalid]="email.invalid && email.touched ? true : null">
+							<ng-container *ngIf="email.invalid && email.touched">
+							<p class="error-message" *ngIf="email?.errors?.required">
+								Email is required!</p>
+							<p class="error-message" *ngIf="email?.errors?.pattern">Email
+								should be the real one!</p>
+							</ng-container>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="moduleId">{{ 'form.module' | translate }}<em>*</em>module</label>
+							<ng-select placeholder="Select Modules" name="moduleIds"
+								[(ngModel)]="user.moduleIds" outline status="info"
+								(change)="onModuleSelect($event)" required size="small"
+								[multiple]="true" [hideSelected]="true" #modDD> <ng-option
+								*ngFor="let module of modules" [value]="module.id">
+							{{ module.name }} </ng-option> </ng-select>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group required">
+							<label for="moduleId">Role</label>
+							<ng-select placeholder="Select" name="roles"
+								[(ngModel)]="user.rolesIds" selected="" outline status="info"
+								 size="small" [multiple]="true"
+								#roleDD required> <ng-option
+								*ngFor="let role of roles" [value]="role.id"> {{
+							role.name }} </ng-option> </ng-select>
+						</div>
+					</div>
+				</div>
+				<div class="row"></div>
+				<button [disabled]="!usrForm.form.valid" type="submit"
+					class="btn btn-danger">{{ 'buttons.save' | translate }}</button>
+			</form>
+	
+	
+				
+				
+			
+	
+			</nb-card-body> </nb-card>
+	
+		</div>
+	</div>

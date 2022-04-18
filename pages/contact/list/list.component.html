@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-lg-12">
+    <nb-card>
+      <nb-card-header>
+        <span><h3>Customer List</h3></span> 
+        <span class="pull-right"><a nbButton size="xsmall" status="primary" routerLink="create"><i class="lni-plus"></i>  Add New</a></span>
+      </nb-card-header>
+      <nb-card-body>
+        <div class="">
+          <dx-data-grid id="gridContainer" [dataSource]="dataSource" [showBorders]="true">
+            <dxo-search-panel [visible]="true" [width]="250"></dxo-search-panel>
+            <dxo-selection mode="single"></dxo-selection>
+            <dxo-header-filter [visible]="true"></dxo-header-filter>
+            <dxo-filter-row [visible]="true"></dxo-filter-row>
+            <dxo-export [enabled]="true" fileName="Contact" [allowExportSelectedData]="true"></dxo-export>
+          
+            <dxi-column dataField="name" caption="Name">
+            </dxi-column>
+            <dxi-column dataField="contactStatus" caption="Customer Type">
+            </dxi-column>
+            <dxi-column dataField="email" caption="Email">
+            </dxi-column>
+            <dxi-column dataField="mobileno1" caption="Phone">
+            </dxi-column>
+            <dxi-column dataField="source" caption="Source of Customer">
+            </dxi-column>
+            <!-- <dxi-column dataField="VisibleStatus" caption="Status">
+                    </dxi-column> -->
+            <dxi-column dataField="createdAt" dataType="date" format="dd-MM-yyyy" caption="Created Date">
+            </dxi-column>
+            <dxi-column dataField="CustomerDate" dataType="date" format="dd-MM-yyyy" caption="Customer Date">
+            </dxi-column>
+            <dxi-column dataField="OpportunityDate" dataType="date" format="dd-MM-yyyy" caption="Opportunity Date">
+            </dxi-column>
+            <dxi-column dataField="OldProspectusDate" dataType="date" format="dd-MM-yyyy" caption="Old Prospectus Date">
+            </dxi-column>
+            <dxi-column dataField="NewProspectusDate" dataType="date" format="dd-MM-yyyy" caption="New Prospectus Date">
+            </dxi-column>
+            <dxi-column dataField="location" caption="Existing Area">
+            </dxi-column>
+            <dxi-column dataField="wishlocation" caption="Moving Area">
+            </dxi-column>
+            <dxi-column dataField="id" caption="Action" [width]="100" [allowFiltering]="false" [allowSorting]="false" cellTemplate="cellTemplate">  
+            </dxi-column>  
+            <div *dxTemplate="let data of 'cellTemplate'">  
+              
+                <a [routerLink]="['view',data.value ]" routerLinkActive="active">  
+                  <i class="lni-popup actionIcon"></i>  
+                </a>
+                <a [routerLink]="['edit',data.value ]" routerLinkActive="active">  
+                  <i class="lni-pencil actionIcon"></i>  
+                </a>  
+                <!-- <form #clientDeleteForm="ngForm" (ngSubmit)="onDeleteSubmit(clientDeleteForm)" novalidate>
+                  <input type="text" name="id" [(ngModel)]="data.value"><br>
+                  <button nbButton size="xsmall" status="default">  Delete</button>
+                </form> -->
+                
+            </div>
+            <dxo-group-panel [visible]="true"></dxo-group-panel>
+            <dxo-grouping #expand [autoExpandAll]="true"></dxo-grouping>
+          </dx-data-grid>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

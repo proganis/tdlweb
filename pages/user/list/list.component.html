@@ -1,0 +1,17 @@
+<nb-card>
+    <nb-card-header>
+        List of Users
+    </nb-card-header>
+
+    <nb-card-body>
+        <ng2-smart-table [settings]="settings" 
+        [source]="source"
+        (edit)="edit($event)"
+        (deleteConfirm)="onDeleteConfirm($event)"
+        (createConfirm)="onCreate($event)">
+
+
+        
+        </ng2-smart-table>
+    </nb-card-body>
+</nb-card>

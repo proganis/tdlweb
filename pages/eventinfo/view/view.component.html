@@ -1,0 +1,123 @@
+<div class="row">
+  <div class="col-md-6">
+    <nb-card>
+      <nb-card-header>
+        <span class="addinfo-header">View Event Information </span>
+          <span class="back-icon position-absolute"> 
+            <a title="Go Back" class="back-button nb-btn-change cursor-pointer" routerLink="/pages/eventinfo/list"><i class="lni-reply"></i> </a>
+          </span>
+      
+      </nb-card-header>
+      <nb-card-body>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="table-responsive">
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <th class="pt-0 border-top-0 " scope="row">Title:</th>
+                    <td class="pt-0 border-top-0 ">{{ viewDetails.title}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Location:</th>
+                    <td>{{ viewDetails.location}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">From date:</th>
+                    <td>{{ viewDetails.fromdate}}</td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row">To date:</th>
+                    <td>{{ viewDetails.todate}}</td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row">Host:</th>
+                    <td>{{ viewDetails.Host}}</td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row">Contact:</th>
+                    <td>{{ viewDetails.contact}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Task description:</th>
+                    <td>{{ viewDetails.description}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+  
+          <div class="col-md-4">
+            <div class="table-responsive">
+              <!-- <table class="table">              
+                <tbody>
+                  <tr>
+                    <th scope="row">Area/Location:</th>
+                    <td>{{ viewDetails.location}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Address:</th>
+                    <td>{{ viewDetails.locationaddress}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Land Size</th>
+                    <td>{{ viewDetails.landsize}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Land Size with Road:</th>
+                    <td>{{ viewDetails.landsizewithroad}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Facing:</th>
+                    <td>{{ viewDetails.facing}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">No Of Owners:</th>
+                    <td>{{ viewDetails.noofowners}}</td>
+                  </tr>
+                </tbody>
+              </table> -->
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="table-responsive">
+              <!-- <table class="table">             
+                <tbody>
+                  <tr>
+                    <th scope="row">Ratio:</th>
+                    <td>{{ viewDetails.ratio}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Cash:</th>
+                    <td>{{ viewDetails.cashamount}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Storied:</th>
+                    <td>{{ viewDetails.noofstoreyed}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Visible Status:</th>
+                    <td>
+                      <div *ngIf="viewDetails.VisibleStatus === '1'">
+                        <span class="badge badge-success">Active</span>
+                      </div>
+                      <div *ngIf="viewDetails.VisibleStatus === '0'">
+                        <span class="badge badge-danger">Inactive</span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table> -->
+            </div>
+          </div>
+        </div>
+      
+
+      </nb-card-body>
+    </nb-card>  
+  </div>
+</div>

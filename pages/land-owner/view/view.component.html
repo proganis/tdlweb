@@ -1,0 +1,119 @@
+<div class="row">
+  <div class="col-md-7">
+
+    <nb-card>
+      <nb-card-header >
+        <span class="addinfo-header"> Land Owner </span>
+
+        <span class="back-icon position-absolute"> 
+          <a title="Go Back" class="back-button nb-btn-change cursor-pointer" routerLink="/pages/land-owner/list"><i class="lni-reply"></i> </a>
+        </span>
+      </nb-card-header>
+
+    <nb-card-body class="position-relative pt-0">
+      
+      <nb-tabset class="tdl-web-tabset">
+
+        <nb-tab tabTitle="Land Owner Details" tabIcon="nb-person" responsive>
+         
+          <div class="table-responsive pt-2">
+            <table class="table">
+              <tbody>
+                 <tr class="d-flex">
+                  <th class="col-sm-4 border-top-0" scope="row">Name:</th>
+                  <td class="col-sm-8 border-top-0">{{ viewDetails.name}}</td>
+                </tr>
+                 <tr class="d-flex">
+                  <th class="col-sm-4" scope="row">Mobile No 1:</th>
+                  <td class="col-sm-8">{{ viewDetails.mobileno1}}</td>
+                </tr>
+                 <tr class="d-flex">
+                  <th class="col-sm-4" scope="row">Mobile No 2:</th>
+                  <td class="col-sm-8">{{ viewDetails.mobileno2}}</td>
+                </tr>
+                 <tr class="d-flex">
+                  <th class="col-sm-4" scope="row">Email:</th>
+                  <td class="col-sm-8">{{ viewDetails.email}}</td>
+                </tr>
+                 <tr class="d-flex">
+                  <th class="col-sm-4" scope="row">Location:</th>
+                  <td class="col-sm-8">{{ viewDetails.landowneraddress}}</td>
+                </tr>
+                 <tr class="d-flex">
+                  <th class="col-sm-4" scope="row">Land Owner Status:</th>
+                  <td class="col-sm-8">{{ viewDetails.landownerstatus}}</td>
+                </tr>
+                <tr class="d-flex">
+                  <th class="col-sm-4 " scope="row">Ratio:</th>
+                  <td class="col-sm-8 " >{{ viewDetails.ratio}}</td>
+                  </tr>
+                  <tr class="d-flex">
+                  <th class="col-sm-4" scope="row">Cash:</th>
+                  <td class="col-sm-8">{{ viewDetails.cashamount}}</td>
+                </tr>
+                  <tr class="d-flex">
+                  <th class="col-sm-4" scope="row">Storied:</th>
+                  <td class="col-sm-8">{{ viewDetails.noofstoreyed}}</td>
+                </tr>
+                  <tr class="d-flex">
+                  <th class="col-sm-4" scope="row">Visible Status:</th>
+                  <td class="col-sm-8">
+                    <div *ngIf="viewDetails.VisibleStatus === '1'">
+                      <span class="tdl-theme-badge badge badge-success">Active</span>
+                    </div>
+                    <div *ngIf="viewDetails.VisibleStatus === '0'">
+                      <span class="tdl-theme-badge badge badge-danger">Inactive</span>
+                    </div>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+   
+        </nb-tab>
+   
+   
+        <nb-tab tabTitle="Land Information" tabIcon="lni-map-marker" responsive>
+        
+          <div class="table-responsive pt-2">
+            <table class="table">
+              <tbody>
+                 <tr class="d-flex">
+                  <th class="col-sm-4 border-top-0" scope="row">Area/Location:</th>
+                  <td class="col-sm-8 border-top-0">{{ viewDetails.location}}</td>
+                </tr>
+                 <tr class="d-flex">
+                  <th class="col-sm-4" scope="row">Address:</th>
+                  <td class="col-sm-8">{{ viewDetails.locationaddress}}</td>
+                </tr>
+                 <tr class="d-flex">
+                  <th class="col-sm-4" scope="row">Land Size</th>
+                  <td class="col-sm-8">{{ viewDetails.landsize}}</td>
+                </tr>
+                 <tr class="d-flex">
+                  <th class="col-sm-4" scope="row">Land Size with Road:</th>
+                  <td class="col-sm-8">{{ viewDetails.landsizewithroad}}</td>
+                </tr>
+                 <tr class="d-flex">
+                  <th class="col-sm-4" scope="row">Facing:</th>
+                  <td class="col-sm-8">{{ viewDetails.facing}}</td>
+                </tr>
+                 <tr class="d-flex">
+                  <th class="col-sm-4" scope="row">No Of Owners:</th>
+                  <td class="col-sm-8">{{ viewDetails.noofowners}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+  
+        </nb-tab>
+       </nb-tabset>
+   
+     </nb-card-body>
+</nb-card>
+  </div>
+
+</div>
+
+

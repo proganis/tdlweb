@@ -1,0 +1,130 @@
+<div class="row">
+  <div class="col-lg-12">
+    <nb-card>
+
+      <nb-card-header>
+        <i class="lni-helmet"><span class="heading"> Report: Project</span></i></nb-card-header>
+
+      <nb-card-body>
+
+        <!-- <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" novalidate>
+           
+          <div class="row labelText"> -->
+            
+            <!-- <div class="col-md-3">
+              <div>
+                <p> Search by Project Type:</p>
+              </div>
+
+              <div class="form-group required" id="dd">
+                <div class="dropdown">
+                  <nb-select size="small" placeholder="Select" name="projectType" ngModel>
+                    <nb-option value="Commercial">Commercial</nb-option>
+                    <nb-option value="Residential">Residential</nb-option>
+                  </nb-select>
+
+                 
+                </div>
+              </div>
+            </div> -->
+
+            <!-- <div class="col-md-3">
+              <div>
+                <p> Search by Project Location:</p>
+              </div>
+
+              <div class="form-group required" id="dd">
+                <div class="dropdown">
+                  <nb-select size="small" placeholder="Select" name="projectLocation" ngModel>
+                    <nb-option value="1">Uttara</nb-option>
+                    <nb-option value="2">Tongi</nb-option>
+                    <nb-option value="3">Badda</nb-option>
+                  </nb-select>
+                </div>
+              </div>
+            </div> -->
+
+            <!-- <div class="col-md-3">
+              <div>
+                <p> Handover From Date:</p>
+              </div>
+  
+              <div class="form-group required">
+                <div class="dropdown" id="dd">
+  
+                  <input type="date" id="fromDate" class="form-control" placeholder="pick Date" name="handOverFromDate" required ngModel>
+  
+                </div>
+  
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div>
+                <p> Handover To Date:</p>
+              </div>
+  
+              <div class="form-group required">
+                <div class="dropdown" id="dd">
+  
+                  <input type="date" id="fromDate" class="form-control" placeholder="pick Date" name="handOverToDate" required ngModel>
+  
+                </div>
+  
+              </div>
+            </div>
+
+
+            <div class="col-md-3 btnSeach">
+              <button id="btnSubmit" size="xsmall" nbButton status="primary"><i class="lni-magnifier"></i></button>
+              <button class="space" nbButton size="xsmall" status="primary" (click)="refresh()"><i class="lni-spinner-arrow"></i></button>
+            </div>
+
+          </div>
+  
+          <br>
+  
+          <br> -->
+  
+        <!-- </form> -->
+
+        
+          <dx-data-grid id="gridContainer" [dataSource]="dataSource" [masterDetail]="{ enabled: true, template: 'detail' }"
+            keyExpr="id" [showBorders]="true">
+            <dxo-search-panel [visible]="true" [width]="250"></dxo-search-panel>
+            <dxo-selection mode="single"></dxo-selection>
+            <dxo-header-filter [visible]="true"></dxo-header-filter>
+            <dxo-filter-row [visible]="true"></dxo-filter-row>
+            <dxo-export [enabled]="true" fileName="Project" [allowExportSelectedData]="true"></dxo-export>
+            <dxi-column dataField="ProjectName" dataType="string" caption="Project Name"></dxi-column>
+            <dxi-column dataField="ProjectType" dataType="string" caption="Project Type"></dxi-column>
+            <dxi-column dataField="ProjectAddress" dataType="string" caption="Project Address"></dxi-column>
+            <dxi-column dataField="LandArea" dataType="number" caption="Land Area"></dxi-column>
+          
+            <dxi-column dataField="HandoverDate" dataType="date" format="dd-MM-yyyy" caption="Handover Date"></dxi-column>
+            <dxi-column caption="Sold Unit Quntity" [calculateCellValue]='soldUnitQty '></dxi-column>
+            <dxi-column caption="Total Sold Amount" [calculateCellValue]='getSoldTotal '></dxi-column>
+            <dxi-column caption="Total Amount" [calculateCellValue]='getTotalAmount '></dxi-column>
+            <!-- <dxo-summary>
+              <dxi-total-item column="ProductName" summaryType="count"></dxi-total-item>
+              <dxi-total-item column="Amount" summaryType="sum" displayFormat="{0}" valueFormat="currency"></dxi-total-item>
+              <dxi-total-item column="OrderCount" summaryType="sum" displayFormat="{0}"></dxi-total-item>
+            </dxo-summary> -->
+          
+            <div *dxTemplate="let details of 'detail'">
+              <div class="master-detail-caption">{{details.data.ProjectName}}</div>
+              <dx-data-grid [dataSource]="getdetals(details.data.id)" [showBorders]="true" [columnAutoWidth]="true">
+                <dxi-column dataField="Floor" dataType="number" caption="Floor"></dxi-column>
+                <dxi-column dataField="UnitId" dataType="string" caption="Unit Id"></dxi-column>
+                <dxi-column dataField="Size" dataType="number" caption="Size"></dxi-column>
+                <dxi-column dataField="Rate" dataType="number" caption="Rate"></dxi-column>
+                <dxi-column dataField="SaleDate" dataType="date" format="dd-MM-yyyy" caption="Sale Date"></dxi-column>
+                <dxi-column dataField="Status" dataType="string" caption="Status"></dxi-column>
+                <dxi-column dataField="Calculated" caption="Amount" [calculateCellValue]='calculateCellValue'></dxi-column>
+              </dx-data-grid>
+            </div>
+          </dx-data-grid>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
